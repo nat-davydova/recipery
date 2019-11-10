@@ -9,8 +9,10 @@ nav.nav
                 use(xlink:href="./assets/sprites/sprites-colored/svg/sprite.symbol.svg#logo")
 
         //search bar
-        form.form.search.search-nav
-            input.search-nav__input.seacrh__input.form-control(type="email" placeholder="Search over 1M recipes!")
+        form.form.search.search-nav.d-flex.align-items-center
+            input.search-nav__input.search__input.form-control(type="email" placeholder="Search over 1M recipes!")
+            button.search__btn.search-nav__btn.btn.btn--iconed.d-inline-flex.align-items-center.ml-1(type="button" title="Search")
+                i.material-icons search
 
         //buttons block (likes and shopping list)
         .btns

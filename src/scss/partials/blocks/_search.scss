@@ -1,0 +1,15 @@
+//settings
+$search-border: $base;
+$search-border-accent: $accent;
+
+.search__input {
+	@include transition-mix;
+
+	border: 2px solid $search-border;
+
+	&:focus,
+	&:active {
+		border-color: $search-border-accent;
+		box-shadow: none;
+	}
+}
