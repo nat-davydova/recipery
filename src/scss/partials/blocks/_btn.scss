@@ -4,10 +4,6 @@ $btn-accent: $accent;
 
 .btn {
 	@include transition-mix;
-
-	&:focus {
-		box-shadow: none;
-	}
 }
 
 .btn--iconed {
