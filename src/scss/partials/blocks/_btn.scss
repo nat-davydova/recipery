@@ -1,0 +1,22 @@
+//settings
+$btn-color: $base;
+$btn-accent: $accent;
+
+.btn {
+	@include transition-mix;
+
+	&:focus {
+		box-shadow: none;
+	}
+}
+
+.btn--iconed {
+	padding: 0;
+
+	color: $btn-color;
+
+	&:hover,
+	&.js-active {
+		color: $btn-accent;
+	}
+}
