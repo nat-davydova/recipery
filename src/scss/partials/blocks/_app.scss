@@ -1,7 +1,6 @@
 //settings
 $frame-width: 375px;
 $frame-height: 667px;
-$frame-padding: 16px;
 
 .app {
 	display: flex;
@@ -14,7 +13,6 @@ $frame-padding: 16px;
 .app__frame {
 	width: $frame-width;
 	height: $frame-height;
-	padding: $frame-padding;
 
 	overflow: hidden;
 	box-sizing: border-box;
