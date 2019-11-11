@@ -2,7 +2,7 @@
 .home
 
     //preloader
-    .home__preloader.preloader
+    .home__preloader.preloader.js-hidden
         .preloader__icon.icon.icon--lg.m-auto
             svg
                 use(xlink:href="./assets/sprites/sprites-solid/svg/sprite.symbol.svg#loader")
@@ -11,18 +11,18 @@
     .home__logo
 
         .logo
-            .logo__icon.icon.icon--md
+            .logo__icon.logo__icon--md
                 svg
                     use(xlink:href="./assets/sprites/sprites-colored/svg/sprite.symbol.svg#logo")
 
-            .logo__text Reci
+            .logo__text.logo__text--md Reci
                 span.logo__accent pery
 
     //search
     .home__search
 
         form.form.search.search-home.d-flex.align-items-center
-            input.search-nav__input.search__input.form-control(type="email" placeholder="Search over 1M recipes!")
+            input.search-home__input.search__input.form-control(type="email" placeholder="Search over 1M recipes!")
             button.search__btn.search-home__btn.btn.btn--iconed.d-inline-flex.align-items-center.ml-2(type="button" title="Search")
                 i.material-icons search
 
