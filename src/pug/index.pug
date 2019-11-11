@@ -16,9 +16,14 @@ html(lang="en")
 
                 .container.main-container
 
-                    .row
+                    .row.js-hidden
                         .col
                             //HOME BLOCK
                             include includes/blocks/home
+
+                    .row
+                        .col
+                            //SEARCH RESULTS
+                            include includes/blocks/search-results
 
         script(src="scripts/scripts.min.js")
