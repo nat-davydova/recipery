@@ -1,30 +1,22 @@
 //-HOME BLOCK (VISIBLE IF NO SEARCH)
 .home.d-flex.flex-column.align-items-center.justify-content-center
 
-    //preloader
-    .home__preloader.preloader.js-hidden
-        .preloader__icon.icon.icon--lg.m-auto
-            svg
-                use(xlink:href="./assets/sprites/sprites-solid/svg/sprite.symbol.svg#loader")
+    //logo block
+    .home__logo
 
-    .home__content.d-flex.flex-column.align-items-center.justify-content-center
+        .logo
+            .logo__icon.logo__icon--md
+                svg
+                    use(xlink:href="./assets/sprites/sprites-colored/svg/sprite.symbol.svg#logo")
 
-        //logo block
-        .home__logo
+            .logo__text.logo__text--md Reci
+                span.logo__accent pery
 
-            .logo
-                .logo__icon.logo__icon--md
-                    svg
-                        use(xlink:href="./assets/sprites/sprites-colored/svg/sprite.symbol.svg#logo")
+    //search
+    .home__search.mt-5
 
-                .logo__text.logo__text--md Reci
-                    span.logo__accent pery
-
-        //search
-        .home__search.mt-5
-
-            form.form.search.search-home.d-flex.align-items-center
-                input.search-home__input.search__input.form-control(type="email" placeholder="Search over 1M recipes!")
-                button.search__btn.search-home__btn.btn.btn--iconed.d-inline-flex.align-items-center.ml-2(type="button" title="Search")
-                    i.material-icons search
+        form.form.search.search-home.d-flex.align-items-center
+            input.search-home__input.search__input.form-control(type="email" placeholder="Search over 1M recipes!")
+            button.search__btn.search-home__btn.btn.btn--iconed.d-inline-flex.align-items-center.ml-2(type="button" title="Search")
+                i.material-icons search
 
