@@ -1,7 +1,7 @@
 //variables
 $icon--sm: 35px;
 $icon--md: 65px;
-$icon--lg: 150px;
+$icon--lg: 95px;
 
 .icon {
 
@@ -18,8 +18,12 @@ $icon--lg: 150px;
 	height: $icon--sm;
 }
 
-//icon sizes
 .icon--md {
 	width: $icon--md;
 	height: $icon--md;
+}
+
+.icon--lg {
+	width: $icon--lg;
+	height: $icon--lg;
 }
