@@ -1,9 +1,23 @@
 //settings
 $btn-color: $base;
 $btn-accent: $accent;
+$btn-light: $light;
 
 .btn {
 	@include transition-mix;
+}
+
+.btn--text {
+	color: $light;
+
+	background-color: $btn-color;
+
+	&:hover,
+	&.js-active {
+		color: $light;
+
+		background-color: $btn-accent;
+	}
 }
 
 .btn--iconed {
