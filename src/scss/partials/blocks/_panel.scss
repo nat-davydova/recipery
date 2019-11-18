@@ -1,4 +1,14 @@
-.panel,
+//settings
+$panel-offset: 15px;
+
+.panel {
+	height: calc(100% - 2 * #{$panel-offset});
+	margin-top: $panel-offset;
+	margin-bottom: $panel-offset;
+
+	overflow: hidden;
+}
+
 .panel__content{
 	height: 100%;
 }
