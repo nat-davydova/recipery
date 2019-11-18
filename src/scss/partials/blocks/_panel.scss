@@ -10,5 +10,7 @@ $panel-offset: 15px;
 }
 
 .panel__content{
+	position: relative;
+
 	height: 100%;
 }
