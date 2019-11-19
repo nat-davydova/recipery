@@ -1,4 +1,5 @@
 //variables
+$icon--xs: 20px;
 $icon--sm: 35px;
 $icon--md: 65px;
 $icon--lg: 95px;
@@ -8,11 +9,18 @@ $icon--lg: 95px;
 	svg {
 		width: 100%;
 		height: 100%;
+		vertical-align: top;
+
 		fill: currentColor;
 	}
 }
 
 //icon sizes
+.icon--xs {
+	width: $icon--xs;
+	height: $icon--xs;
+}
+
 .icon--sm {
 	width: $icon--sm;
 	height: $icon--sm;
