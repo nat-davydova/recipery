@@ -18,13 +18,24 @@ const state = {
 //*** SEARCH HANDLER
 
 const searchController = async () => {
-	
+	console.log('search');
 };
 
-//*** HOME SEARCH BTN HANDLER
+//*** HOME SEARCH FIELD HANDLERS
 DOM.search.homeBtn.addEventListener('click', () => {
 
 	//implementing search
 	searchController();
+
+});
+
+DOM.search.homeField.addEventListener('keydown', e => {
+
+	if(e.keyCode === 13) {
+
+		//implementing search
+		searchController();
+
+	}
 
 });
