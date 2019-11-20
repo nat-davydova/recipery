@@ -5,7 +5,8 @@ $icon-color: $base;
 	@include img-position($max-width: 130%, $max-height: 130%);
 
 	width: 100%;
-	height: 200px;
+	height: 150px;
+	margin-top: 15px;
 
 	overflow: hidden;
 }
@@ -20,4 +21,35 @@ $icon-color: $base;
 	margin-right: 5px;
 
 	color: $icon-color;
+}
+
+.recipe-full__ingred {
+	flex-direction: row;
+	align-items: center;
+	padding: 5px 10px;
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.recipe-full__ingred-img {
+	@include img-position($max-width: 130%, $max-height: 130%);
+
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+
+	border-radius: 50%;
+
+	overflow: hidden;
+}
+
+.recipe-full__ingred-content {
+	padding: 0 0 0 10px;
+
+	p {
+		margin-bottom: 0;
+	}
 }
