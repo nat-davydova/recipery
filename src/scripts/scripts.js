@@ -31,6 +31,9 @@ DOM.search.homeBtn.addEventListener('click', () => {
 
 DOM.search.homeField.addEventListener('keydown', e => {
 
+	//prevent reloading
+	e.preventDefault();
+
 	if(e.keyCode === 13) {
 
 		//implementing search
