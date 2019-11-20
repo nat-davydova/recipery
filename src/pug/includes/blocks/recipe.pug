@@ -18,25 +18,25 @@
         h3.recipe-full__title.mt-3 Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs
 
         //recipe info (servings and ready-in mins )
-        .recipe-full__info.d-flex.align-items-center
+        .recipe-full__info.d-flex.align-items-center.mt-3
 
             //ready-in mins
-            .ready-in-mins.d-flex.align-items-center.mr-3
+            .ready-in-mins.recipe-full__info-block.d-flex.align-items-center.mr-3
 
-                .ready-in-mins__icon.icon.icon--xs
+                .ready-in-mins__icon.recipe-full__info-icon.icon.icon--xs
                     svg
                         use(xlink:href="./assets/sprites/sprites-solid/svg/sprite.symbol.svg#clock")
 
-                span.ready-in-mins__content 45
+                span.ready-in-mins__content.recipe-full__info-content 45
 
             //servings
-            .servings.d-flex.align-items-center
+            .servings.recipe-full__info-block.d-flex.align-items-center
 
-                .servings__icon.icon.icon--xs
+                .servings__icon.recipe-full__info-icon.icon.icon--xs
                     svg
                         use(xlink:href="./assets/sprites/sprites-solid/svg/sprite.symbol.svg#cutlery")
 
-                span.servings__content 4
+                span.servings__content.recipe-full__info-content 4
 
         //recipe ingredients list
         .recipe-full__ingreds-list

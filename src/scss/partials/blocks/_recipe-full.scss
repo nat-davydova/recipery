@@ -1,3 +1,6 @@
+//settings
+$icon-color: $base;
+
 .recipe-full__img {
 	@include img-position($max-width: 130%, $max-height: 130%);
 
@@ -11,4 +14,10 @@
 	font: {
 		size: 1.4em;
 	}
+}
+
+.recipe-full__info-icon {
+	margin-right: 5px;
+
+	color: $icon-color;
 }
