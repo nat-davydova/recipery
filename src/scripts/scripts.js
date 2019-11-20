@@ -18,5 +18,13 @@ const state = {
 //*** SEARCH HANDLER
 
 const searchController = async () => {
-
+	
 };
+
+//*** HOME SEARCH BTN HANDLER
+DOM.search.homeBtn.addEventListener('click', () => {
+
+	//implementing search
+	searchController();
+
+});
