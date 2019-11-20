@@ -1,8 +1,14 @@
 .recipe-full__img {
-	@include img-position($max-width: 120%, $max-height: 120%);
+	@include img-position($max-width: 130%, $max-height: 130%);
 
 	width: 100%;
 	height: 200px;
 
 	overflow: hidden;
+}
+
+.recipe-full__title {
+	font: {
+		size: 1.4em;
+	}
 }
