@@ -4,6 +4,8 @@ export default class Search {
 		this.query = searchQuery;
 	};
 
+	getSearchResults = async () => {
 
+	};
 
 };
