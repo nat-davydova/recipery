@@ -27,6 +27,8 @@ const searchController = async (searchField) => {
 
 	if(searchQuery) {
 		state.search = new Search(searchQuery);
+
+		state.search.results = await state.search.getSearchResults();
 	}
 
 	console.log(state);
