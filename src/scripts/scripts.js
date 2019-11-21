@@ -28,9 +28,11 @@ const searchController = async (searchField) => {
 	//get search results
 	if(searchQuery) {
 
+		//create new search object based on the search query
 		state.search = new Search(searchQuery);
 
-		await state.search.getSearchResults();
+		//grabbing search results from API
+		await state.search.getSearchResults(); //10 items per request
 
 	}
 
