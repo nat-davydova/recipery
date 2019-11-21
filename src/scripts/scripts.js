@@ -35,23 +35,38 @@ const searchController = async (searchField) => {
 
 };
 
-//*** HOME SEARCH FIELD HANDLERS
-DOM.search.homeBtn.addEventListener('click', () => {
+//*** EVENT HANDLERS
 
-	//implementing search
-	searchController(DOM.search.homeField);
+document.addEventListener('click', e => {
+
+	const target = e.target;
+
+	//clicking on search buttons
+	if (target.closest(DOM.search.homeBtn)) {
+
+		//implementing search
+		searchController(document.querySelector(DOM.search.homeField));
+
+	}
 
 });
 
-DOM.search.homeField.addEventListener('keydown', e => {
+document.addEventListener('keydown', e => {
 
-	if(e.keyCode === 13) {
+	const target = e.target;
 
-		//prevent reloading
-		e.preventDefault();
+	//pressing enter btn on the keybord while searching
+	if (target.closest(DOM.search.homeField)) {
 
-		//implementing search
-		searchController(DOM.search.homeField);
+		if(e.key === 'Enter') {
+
+			//prevent reloading
+			e.preventDefault();
+
+			//implementing search
+			searchController(document.querySelector(DOM.search.homeField));
+
+		}
 
 	}
 

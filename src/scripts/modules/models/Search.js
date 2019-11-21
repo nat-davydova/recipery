@@ -14,11 +14,11 @@ export default class Search {
 			const apiKey = `apiKey=${recipeApi}`;
 			const search = `ingredients=${this.searchQuery}`;
 
-			this.results = await axios(`${apiURL}${apiKey}&${search}`);
+			const searchResults = await axios(`${apiURL}${apiKey}&${search}`);
 
-			//this.results = searchResults;
+			this.results = searchResults.data;
 
-			console.log(this.results);
+			console.log(this.searchQuery);
 		} catch (e) {
 			console.log(e);
 		}
