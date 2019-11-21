@@ -14,9 +14,9 @@ export default class Search {
 			const apiKey = `apiKey=${recipeApi}`;
 			const search = `ingredients=${this.searchQuery}`;
 
-			const searchResults = await axios(`${apiURL}${apiKey}&${search}`);
+			this.results = await axios(`${apiURL}${apiKey}&${search}`);
 
-			this.results = searchResults;
+			//this.results = searchResults;
 
 			console.log(this.results);
 		} catch (e) {
