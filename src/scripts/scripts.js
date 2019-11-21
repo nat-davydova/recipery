@@ -14,9 +14,7 @@ import { getInputVal } from "./modules/utils";
 //here stored:
 //- search query
 //- faved recipes
-const state = {
-
-};
+const state = {};
 
 //*** SEARCH HANDLER
 
@@ -30,6 +28,9 @@ const searchController = async (searchField) => {
 
 		//create new search object based on the search query
 		state.search = new Search(searchQuery);
+
+		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
+		Search.multiWordsQuery(searchQuery);
 
 		//grabbing search results from API
 		await state.search.getSearchResults(); //10 items per request
