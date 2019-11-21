@@ -18,9 +18,10 @@ export default class Search {
 
 			this.results = searchResults.data;
 
-			console.log(this.searchQuery);
 		} catch (e) {
+
 			console.log(e);
+
 		}
 
 	};

@@ -25,14 +25,12 @@ const searchController = async (searchField) => {
 	//get search query from the search input
 	const searchQuery = getInputVal(searchField);
 
+	//get search results
 	if(searchQuery) {
+
 		state.search = new Search(searchQuery);
 
-		try {
-			await state.search.getSearchResults();
-		} catch (e) {
-			console.log(e);
-		}
+		await state.search.getSearchResults();
 
 	}
 
