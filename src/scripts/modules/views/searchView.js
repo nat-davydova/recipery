@@ -42,7 +42,7 @@ const recipeCard = (id, title, img) => {
 
 	recipeImg.setAttribute('alt', title);
 
-	DOM.searchResults.appendChild(card);
+	DOM.searchResPanel.results.appendChild(card);
 
 };
 

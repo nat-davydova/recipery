@@ -21,6 +21,8 @@ export const DOM = {
 		title: '.recipe-card__title',
 	},
 
-	searchResults: document.querySelector('.search-results__results'),
+	searchResPanel: {
+		results: document.querySelector('.search-results__results'),
+	},
 
 };
