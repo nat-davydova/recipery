@@ -10,16 +10,15 @@ export default class Search {
 	};
 
 	//grabbing search results from API (10 items per request)
-	getSearchResults = async () => {
-
-		console.log(this.searchQuery);
+	getSearchResults = async num => {
 
 		try {
 			const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?`;
 			const apiKey = `apiKey=${recipeApi}`;
 			const search = `ingredients=${this.searchQuery}`;
+			const recipesNum = `number=${num}`;
 
-			const searchResults = await axios(`${apiURL}${apiKey}&${search}`);
+			const searchResults = await axios(`${apiURL}${apiKey}&${search}&${recipesNum}`);
 
 			this.results = searchResults.data;
 
