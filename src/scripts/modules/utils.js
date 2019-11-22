@@ -21,3 +21,9 @@ export const scrollbarsInit = () => {
 	});
 
 };
+
+//clean element inner HTML
+export const cleanElemInner = elem => elem.innerHTML = '';
+
+//clean input
+export const cleanInput = input => input.value = '';

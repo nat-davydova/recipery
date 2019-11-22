@@ -25,4 +25,8 @@ export const DOM = {
 		results: document.querySelector('.search-results__results'),
 	},
 
+	returnBtns: {
+		recipeReturn: '.search-results .return-btn',
+	}
+
 };

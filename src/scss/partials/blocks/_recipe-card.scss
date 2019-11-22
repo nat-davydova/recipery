@@ -6,7 +6,7 @@
 }
 
 .recipe-card__img {
-	@include img-position($max-width: 110%, $max-height: 110%);
+	@include img-position($max-width: 150%, $max-height: 150%);
 
 	flex-shrink: 0;
 	width: 75px;

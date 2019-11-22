@@ -8,7 +8,7 @@ import * as searchView from './modules/views/searchView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
-import { getInputVal, hideElem, showElem, scrollbarsInit } from "./modules/utils";
+import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput } from "./modules/utils";
 
 //state
 //here stored:
@@ -72,6 +72,22 @@ document.addEventListener('click', e => {
 		//implementing search
 		searchController(document.querySelector(DOM.search.field));
 
+	}
+
+	//clicking on return btn from search panel
+	if(target.closest(DOM.returnBtns.recipeReturn)) {
+
+		//close search panel
+		hideElem(DOM.panels.searchRes);
+
+		//show home panel
+		showElem(DOM.panels.home);
+
+		//clean search results
+		cleanElemInner(DOM.searchResPanel.results);
+
+		//clean search input
+		cleanInput(document.querySelector(DOM.search.field));
 	}
 
 });
