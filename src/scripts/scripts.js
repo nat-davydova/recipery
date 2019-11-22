@@ -8,7 +8,7 @@ import * as searchView from './modules/views/searchView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
-import { getInputVal, multiWordsQuery } from "./modules/utils";
+import { getInputVal, hidePanel, showPanel } from "./modules/utils";
 
 //state
 //here stored:
@@ -34,7 +34,9 @@ const searchController = async (searchField) => {
 
 		//prepare UI
 
-		//if current panel is not for search results, hide it, else - clear it
+		//hide home panel and show search results panel
+		hidePanel(DOM.panels.home);
+		showPanel(DOM.panels.searchRes);
 
 		//grabbing search results from API
 		await state.search.getSearchResults(25); //number - items per request (min - 1, max - 100)
