@@ -8,7 +8,7 @@ import * as searchView from './modules/views/searchView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
-import { getInputVal } from "./modules/utils";
+import { getInputVal, multiWordsQuery } from "./modules/utils";
 
 //state
 //here stored:
@@ -21,16 +21,18 @@ const state = {};
 const searchController = async (searchField, currentPanel) => {
 
 	//get search query from the search input
-	const searchQuery = getInputVal(searchField);
+	const query = getInputVal(searchField);
 
 	//get search results
-	if(searchQuery) {
+	if(query) {
+
+		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
+		const searchQuery = multiWordsQuery(query);
+
+		console.log(searchQuery);
 
 		//create new search object based on the search query
 		state.search = new Search(searchQuery);
-
-		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
-		Search.multiWordsQuery(searchQuery);
 
 		//prepare UI
 
