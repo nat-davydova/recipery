@@ -8,7 +8,7 @@ import * as searchView from './modules/views/searchView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
-import { getInputVal, hidePanel, showPanel, scrollbarsInit } from "./modules/utils";
+import { getInputVal, hideElem, showElem, scrollbarsInit } from "./modules/utils";
 
 //state
 //here stored:
@@ -34,13 +34,19 @@ const searchController = async (searchField) => {
 
 		//prepare UI
 
-		//hide home panel and show search results panel
-		hidePanel(DOM.panels.home);
-		showPanel(DOM.panels.searchRes);
+		//hide home panel
+		hideElem(DOM.panels.home);
+
+		//show preloader
+		showElem(DOM.loaders.mainLoader);
 
 		//grabbing search results from API
 		await state.search.getSearchResults(25); //number - items per request (min - 1, max - 100)
 
+		//hide loader
+		hideElem(DOM.loaders.mainLoader);
+
+		showElem(DOM.panels.searchRes);
 	}
 
 	console.log(state);
