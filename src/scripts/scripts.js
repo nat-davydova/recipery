@@ -27,7 +27,7 @@ const searchController = async (searchField, currentPanel) => {
 	if(query) {
 
 		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
-		const searchQuery = multiWordsQuery(query);
+		const searchQuery = searchView.multiWordsQuery(query);
 
 		//create new search object based on the search query
 		state.search = new Search(searchQuery);
@@ -37,7 +37,7 @@ const searchController = async (searchField, currentPanel) => {
 		//if current panel is not for search results, hide it, else - clear it
 
 		//grabbing search results from API
-		await state.search.getSearchResults(30); //number - items per request (min - 10, max - 100)
+		await state.search.getSearchResults(25); //number - items per request (min - 1, max - 100)
 
 	}
 
