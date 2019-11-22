@@ -47,7 +47,13 @@ const recipeCard = (id, title, img) => {
 
 };
 
-export const renderSearchResults = searchArr => {
+export const renderSearchResults = (searchArr, errorMsg) => {
+
+	if(errorMsg) {
+		renderErrorMsg(errorMsg, DOM.searchResPanel.results);
+
+		return;
+	}
 
 	if (searchArr.length > 0) {
 

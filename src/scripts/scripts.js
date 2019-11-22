@@ -48,7 +48,7 @@ const searchController = async (searchField) => {
 		showElem(DOM.panels.searchRes);
 
 		//render search results
-		searchView.renderSearchResults(state.search.results);
+		searchView.renderSearchResults(state.search.results, state.search.errorMessage);
 	}
 
 	console.log(state);

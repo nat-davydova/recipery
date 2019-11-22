@@ -26,6 +26,8 @@ export default class Search {
 
 			console.log(e);
 
+			this.errorMessage = 'Sorry, something went wrong with API request :( Try one more time!'
+
 		}
 
 	};
