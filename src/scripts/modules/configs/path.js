@@ -27,6 +27,8 @@ export const DOM = {
 
 	returnBtns: {
 		recipeReturn: '.search-results .return-btn',
-	}
+	},
+
+	errorContainer: document.querySelector('.errorContainer')
 
 };

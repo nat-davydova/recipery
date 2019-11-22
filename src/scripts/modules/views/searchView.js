@@ -1,4 +1,5 @@
 import { DOM } from '../configs/path';
+import { renderErrorMsg } from "../utils";
 
 //multiwords search query
 export const multiWordsQuery = (query) => {
@@ -48,10 +49,18 @@ const recipeCard = (id, title, img) => {
 
 export const renderSearchResults = searchArr => {
 
-	searchArr.forEach(({id, title, image}) => {
+	if (searchArr.length > 0) {
 
-		recipeCard(id, title, image);
+		searchArr.forEach(({id, title, image}) => {
 
-	});
+			recipeCard(id, title, image);
+
+		});
+
+	} else {
+
+		renderErrorMsg(`Sorry, we can't find any recipes :( Try other keywords!`, DOM.searchResPanel.results);
+
+	}
 
 };

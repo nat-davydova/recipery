@@ -27,3 +27,18 @@ export const cleanElemInner = elem => elem.innerHTML = '';
 
 //clean input
 export const cleanInput = input => input.value = '';
+
+//render error messages
+export const renderErrorMsg = (errorText, renderPlace) => {
+
+	const error = DOM.errorContainer.cloneNode(true);
+
+	error.classList.remove('js-hidden');
+
+	const errorMsg = error.querySelector('p');
+
+	errorMsg.textContent = errorText;
+
+	renderPlace.appendChild(error);
+
+};
