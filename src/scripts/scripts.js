@@ -18,7 +18,7 @@ const state = {};
 
 //*** SEARCH HANDLER
 
-const searchController = async (searchField) => {
+const searchController = async (searchField, currentPanel) => {
 
 	//get search query from the search input
 	const searchQuery = getInputVal(searchField);
@@ -31,6 +31,10 @@ const searchController = async (searchField) => {
 
 		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
 		Search.multiWordsQuery(searchQuery);
+
+		//prepare UI
+
+		//if current panel is not for search results, hide it, else - clear it
 
 		//grabbing search results from API
 		await state.search.getSearchResults(); //10 items per request

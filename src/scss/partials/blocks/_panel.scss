@@ -2,7 +2,11 @@
 $panel-offset: 15px;
 
 .panel {
-	height: calc(100% - 2 * #{$panel-offset});
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	height: calc(100% - 2 * #{$panel-offset} - #{$nav-height});
 	margin-top: $panel-offset;
 	margin-bottom: $panel-offset;
 
