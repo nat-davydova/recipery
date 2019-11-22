@@ -13,6 +13,14 @@ export const DOM = {
 
 	loaders: {
 		mainLoader: document.querySelector('.preloader'),
-	}
+	},
+
+	recipeCard: {
+		card: document.querySelector('.recipe-card'),
+		img: '.recipe-card__img img',
+		title: '.recipe-card__title',
+	},
+
+	searchResults: document.querySelector('.search-results__results'),
 
 };

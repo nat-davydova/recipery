@@ -32,8 +32,6 @@ const searchController = async (searchField) => {
 		//create new search object based on the search query
 		state.search = new Search(searchQuery);
 
-		//prepare UI
-
 		//hide home panel
 		hideElem(DOM.panels.home);
 
@@ -41,12 +39,16 @@ const searchController = async (searchField) => {
 		showElem(DOM.loaders.mainLoader);
 
 		//grabbing search results from API
-		await state.search.getSearchResults(25); //number - items per request (min - 1, max - 100)
+		await state.search.getSearchResults(5); //number - items per request (min - 1, max - 100)
 
 		//hide loader
 		hideElem(DOM.loaders.mainLoader);
 
+		//show results panel
 		showElem(DOM.panels.searchRes);
+
+		//render search results
+		searchView.renderSearchResults(state.search.results);
 	}
 
 	console.log(state);
