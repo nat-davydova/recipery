@@ -1,8 +1,8 @@
 export const DOM = {
 
 	search: {
-		homeBtn: '.search-home__btn',
-		homeField: '.search-home__input',
+		btn: '.search-home__btn',
+		field: '.search-home__input',
 	}
 
 };

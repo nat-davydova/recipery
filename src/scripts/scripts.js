@@ -18,7 +18,7 @@ const state = {};
 
 //*** SEARCH HANDLER
 
-const searchController = async (searchField, currentPanel) => {
+const searchController = async (searchField) => {
 
 	//get search query from the search input
 	const query = getInputVal(searchField);
@@ -52,10 +52,10 @@ document.addEventListener('click', e => {
 	const target = e.target;
 
 	//clicking on search buttons
-	if (target.closest(DOM.search.homeBtn)) {
+	if (target.closest(DOM.search.btn)) {
 
 		//implementing search
-		searchController(document.querySelector(DOM.search.homeField));
+		searchController(document.querySelector(DOM.search.field));
 
 	}
 
@@ -66,7 +66,7 @@ document.addEventListener('keydown', e => {
 	const target = e.target;
 
 	//pressing enter btn on the keybord while searching
-	if (target.closest(DOM.search.homeField)) {
+	if (target.closest(DOM.search.field)) {
 
 		if(e.key === 'Enter') {
 
@@ -74,7 +74,7 @@ document.addEventListener('keydown', e => {
 			e.preventDefault();
 
 			//implementing search
-			searchController(document.querySelector(DOM.search.homeField));
+			searchController(document.querySelector(DOM.search.field));
 
 		}
 
