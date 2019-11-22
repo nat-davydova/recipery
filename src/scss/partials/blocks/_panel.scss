@@ -2,6 +2,8 @@
 $panel-offset: 15px;
 
 .panel {
+	position: relative;
+
 	height: calc(100% - 2 * #{$panel-offset});
 	margin-top: $panel-offset;
 	margin-bottom: $panel-offset;

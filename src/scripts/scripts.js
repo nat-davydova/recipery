@@ -8,7 +8,7 @@ import * as searchView from './modules/views/searchView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
-import { getInputVal, hidePanel, showPanel } from "./modules/utils";
+import { getInputVal, hidePanel, showPanel, scrollbarsInit } from "./modules/utils";
 
 //state
 //here stored:
@@ -46,6 +46,11 @@ const searchController = async (searchField) => {
 	console.log(state);
 
 };
+
+//*** INIT APP
+window.addEventListener('load', () => {
+	scrollbarsInit();
+});
 
 //*** EVENT HANDLERS
 

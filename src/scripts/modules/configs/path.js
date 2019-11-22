@@ -6,6 +6,7 @@ export const DOM = {
 	},
 
 	panels: {
+		panelsArr: document.querySelectorAll('.panel'),
 		home: document.querySelector('.home-panel'),
 		searchRes: document.querySelector('.search-res-panel'),
 	}
