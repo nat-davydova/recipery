@@ -14,27 +14,27 @@ html(lang="en")
                     //NAV BLOCK
                     include includes/blocks/nav
 
-                .container.main-container.panel
+                .container.main-container
 
                     //preloader
                     include includes/blocks/preloader
 
-                    .row
+                    .row.home-panel.panel
                         .col
                             //HOME BLOCK
                             include includes/blocks/home
 
-                    .row
+                    .row.search-res-panel.panel.js-hidden
                         .col
                             //SEARCH RESULTS
                             include includes/blocks/search-results
 
-                    .row
+                    .row.recipe-panel.panel.js-hidden
                         .col
                             //SINGLE RECIPE INFO
                             include includes/blocks/recipe
 
-                    .row
+                    .row.favs-panel.panel.js-hidden
                         .col
                             //FAVS
                             include includes/blocks/favs

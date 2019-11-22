@@ -6,8 +6,8 @@ export const DOM = {
 	},
 
 	panels: {
-		home: document.querySelector('.home'),
-		searchRes: document.querySelector('.search-results'),
+		home: document.querySelector('.home-panel'),
+		searchRes: document.querySelector('.search-res-panel'),
 	}
 
 };

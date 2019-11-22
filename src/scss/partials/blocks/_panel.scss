@@ -2,15 +2,15 @@
 $panel-offset: 15px;
 
 .panel {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: center;
-	height: calc(100% - 2 * #{$panel-offset} - #{$nav-height});
+	height: calc(100% - 2 * #{$panel-offset});
 	margin-top: $panel-offset;
 	margin-bottom: $panel-offset;
 
 	overflow: hidden;
+
+	.col {
+		height: 100%;
+	}
 }
 
 .panel__content{
