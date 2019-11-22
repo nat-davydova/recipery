@@ -22,9 +22,9 @@ export default class Search {
 
 			});
 
-		}
+			this.searchQuery = newQueryArr.join(',');
 
-		this.searchQuery = newQueryArr.join(',');
+		}
 
 	};
 
