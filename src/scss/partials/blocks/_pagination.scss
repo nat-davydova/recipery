@@ -1,0 +1,28 @@
+//settings
+$pagination-base: $base;
+$pagination-accent: $accent;
+$pagination-light: $light;
+
+.pagination__link {
+	@include transition-mix();
+
+	color: $pagination-base;
+
+	&:hover {
+		color: $pagination-light;
+
+		background-color: $pagination-accent;
+		border-color: $pagination-accent;
+	}
+}
+
+.pagination__item {
+
+	&.active > .pagination__link {
+
+		color: $pagination-light;
+
+		background-color: $pagination-base;
+		border-color: $pagination-base;
+	}
+}
