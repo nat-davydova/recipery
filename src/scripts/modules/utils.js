@@ -46,6 +46,10 @@ export const renderErrorMsg = (errorText, renderPlace) => {
 //pagination function
 export const pagination = (arr, itemsPerPage, currentPage) => {
 
-	return arr.slice(0, itemsPerPage);
+	const startInd = itemsPerPage * currentPage - itemsPerPage;
+
+	const finalInd = itemsPerPage * currentPage;
+
+	return arr.slice(startInd, finalInd);
 
 };
