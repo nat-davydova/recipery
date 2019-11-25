@@ -21,7 +21,9 @@ const state = {};
 const searchController = async (searchField) => {
 
 	//get search query from the search input
-	const query = getInputVal(searchField);
+	//const query = getInputVal(searchField);
+
+	const query = 'milk,+cheese';
 
 	//get search results
 	if(query) {
@@ -39,7 +41,7 @@ const searchController = async (searchField) => {
 		showElem(DOM.loaders.mainLoader);
 
 		//grabbing search results from API
-		await state.search.getSearchResults(20); //number - items per request (min - 1, max - 100)
+		await state.search.getSearchResults(15); //number - items per request (min - 1, max - 100)
 
 		//hide loader
 		hideElem(DOM.loaders.mainLoader);
@@ -58,6 +60,7 @@ const searchController = async (searchField) => {
 //*** INIT APP
 window.addEventListener('load', () => {
 	scrollbarsInit();
+	searchController(document.querySelector(DOM.search.field));
 });
 
 //*** EVENT HANDLERS
