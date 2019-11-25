@@ -1,19 +1,18 @@
-.pagination-block
+//-PAGINATION BLOCK
+ul.pagination.justify-content-center
 
-    ul.pagination.justify-content-center
+    li.pagination__item.page-item.disabled
+        a.pagination__link.page-link(href="#" tabindex="-1") Previous
 
-        li.pagination__item.page-item.disabled
-            a.pagination__link.page-link(href="#" tabindex="-1") Previous
+    li.pagination__item.page-item.active
+        a.pagination__link.page-link(href="#") 1
+            span.sr-only (current)
 
-        li.pagination__item.page-item.active
-            a.pagination__link.page-link(href="#") 1
-                span.sr-only (current)
+    li.pagination__item.page-item
+        a.pagination__link.page-link(href="#") 2
 
-        li.pagination__item.page-item
-            a.pagination__link.page-link(href="#") 2
+    li.pagination__item.page-item
+        a.pagination__link.page-link(href="#") 3
 
-        li.pagination__item.page-item
-            a.pagination__link.page-link(href="#") 3
-
-        li.pagination__item.page-item
-            a.pagination__link.page-link(href="#" tabindex="+1") Next
+    li.pagination__item.page-item
+        a.pagination__link.page-link(href="#" tabindex="+1") Next
