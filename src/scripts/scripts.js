@@ -23,7 +23,7 @@ const searchController = async (searchField) => {
 	//get search query from the search input
 	//const query = getInputVal(searchField);
 
-	const query = 'milk,+cheese';
+	const query = 'mushrooms,+cheese';
 
 	//get search results
 	if(query) {

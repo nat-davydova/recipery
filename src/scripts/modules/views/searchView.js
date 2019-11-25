@@ -1,5 +1,5 @@
 import { DOM } from '../configs/path';
-import { renderErrorMsg, showElem } from "../utils";
+import { renderErrorMsg, showElem, pagination } from "../utils";
 
 //multiwords search query
 export const multiWordsQuery = (query) => {
@@ -65,7 +65,10 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage) => {
 
 		//show pagination, if there are more elems than displayed on 1 page
 		if(searchArr.length > itemsPerPage) {
+
 			showElem(DOM.searchResPanel.pagination);
+
+			pagination(searchArr.length, itemsPerPage);
 		}
 
 	} else {

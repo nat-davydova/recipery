@@ -42,3 +42,10 @@ export const renderErrorMsg = (errorText, renderPlace) => {
 	renderPlace.appendChild(error);
 
 };
+
+//pagination function
+export const pagination = (arr, itemsPerPage) => {
+
+
+
+};
