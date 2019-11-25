@@ -18,7 +18,7 @@ const state = {};
 
 //*** SEARCH HANDLER
 
-const searchController = async (searchField) => {
+const searchController = async (searchField, currentPage = 1) => {
 
 	//get search query from the search input
 	//const query = getInputVal(searchField);
@@ -26,7 +26,7 @@ const searchController = async (searchField) => {
 	const query = 'mushrooms';
 
 	//get search results
-	if(query) {
+	if(query && currentPage !== ) {
 
 		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
 		const searchQuery = searchView.multiWordsQuery(query);
