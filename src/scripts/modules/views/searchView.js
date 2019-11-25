@@ -55,21 +55,22 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage) => {
 		return;
 	}
 
-	if (searchArr.length > 0) {
+	if (searchArr.length > itemsPerPage) {
+
+		//show pagination, if there are more elems than displayed on 1 page
+		showElem(DOM.searchResPanel.pagination);
+
+		pagination(searchArr.length, itemsPerPage, (id, title, image) => {
+			recipeCard(id, title, image);
+		});
+
+	} else if (searchArr.length <= itemsPerPage && searchArr.length > 0) {
 
 		searchArr.forEach(({id, title, image}) => {
 
 			recipeCard(id, title, image);
 
 		});
-
-		//show pagination, if there are more elems than displayed on 1 page
-		if(searchArr.length > itemsPerPage) {
-
-			showElem(DOM.searchResPanel.pagination);
-
-			pagination(searchArr.length, itemsPerPage);
-		}
 
 	} else {
 

@@ -44,7 +44,7 @@ export const renderErrorMsg = (errorText, renderPlace) => {
 };
 
 //pagination function
-export const pagination = (arr, itemsPerPage) => {
+export const pagination = (arr, itemsPerPage, renderItemFunction) => {
 
 
 
