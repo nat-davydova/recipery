@@ -23,6 +23,7 @@ export const DOM = {
 
 	searchResPanel: {
 		results: document.querySelector('.search-results__results'),
+		pagination: document.querySelector('.search-results__pagination'),
 	},
 
 	returnBtns: {

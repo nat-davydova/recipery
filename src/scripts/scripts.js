@@ -39,7 +39,7 @@ const searchController = async (searchField) => {
 		showElem(DOM.loaders.mainLoader);
 
 		//grabbing search results from API
-		await state.search.getSearchResults(5); //number - items per request (min - 1, max - 100)
+		await state.search.getSearchResults(20); //number - items per request (min - 1, max - 100)
 
 		//hide loader
 		hideElem(DOM.loaders.mainLoader);
@@ -47,8 +47,8 @@ const searchController = async (searchField) => {
 		//show results panel
 		showElem(DOM.panels.searchRes);
 
-		//render search results
-		searchView.renderSearchResults(state.search.results, state.search.errorMessage);
+		//render search results (number - items per page number, for pagination)
+		searchView.renderSearchResults(state.search.results, state.search.errorMessage, 5);
 	}
 
 	console.log(state);

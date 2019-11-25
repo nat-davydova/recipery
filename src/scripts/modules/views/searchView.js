@@ -1,5 +1,5 @@
 import { DOM } from '../configs/path';
-import { renderErrorMsg } from "../utils";
+import { renderErrorMsg, showElem } from "../utils";
 
 //multiwords search query
 export const multiWordsQuery = (query) => {
@@ -47,7 +47,7 @@ const recipeCard = (id, title, img) => {
 
 };
 
-export const renderSearchResults = (searchArr, errorMsg) => {
+export const renderSearchResults = (searchArr, errorMsg, itemsPerPage) => {
 
 	if(errorMsg) {
 		renderErrorMsg(errorMsg, DOM.searchResPanel.results);
@@ -62,6 +62,11 @@ export const renderSearchResults = (searchArr, errorMsg) => {
 			recipeCard(id, title, image);
 
 		});
+
+		//show pagination, if there are more elems than displayed on 1 page
+		if(searchArr.length > itemsPerPage) {
+			showElem(DOM.searchResPanel.pagination);
+		}
 
 	} else {
 
