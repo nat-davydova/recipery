@@ -50,7 +50,10 @@ const searchController = async (searchField) => {
 		showElem(DOM.panels.searchRes);
 
 		//render search results (number - items per page number, for pagination)
-		searchView.renderSearchResults(state.search.results, state.search.errorMessage, 5);
+		state.search.currentPage = 1;
+		state.search.itemsPerPage = 5;
+
+		searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage);
 	}
 
 	console.log(state);

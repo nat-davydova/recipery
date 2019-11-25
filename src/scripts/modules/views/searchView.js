@@ -47,7 +47,7 @@ const recipeCard = (id, title, img) => {
 
 };
 
-export const renderSearchResults = (searchArr, errorMsg, itemsPerPage) => {
+export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPage) => {
 
 	if(errorMsg) {
 		renderErrorMsg(errorMsg, DOM.searchResPanel.results);
@@ -60,15 +60,15 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage) => {
 		//show pagination, if there are more elems than displayed on 1 page
 		showElem(DOM.searchResPanel.pagination);
 
-		const pagedArr = pagination(searchArr, itemsPerPage, 1);
+		const pagedArr = pagination(searchArr, itemsPerPage, currentPage);
 
-		console.log(searchArr, pagedArr);
+		if(pagedArr) {
+			pagedArr.forEach(({id, title, image}) => {
 
-		pagedArr.forEach(({id, title, image}) => {
+				recipeCard(id, title, image);
 
-			recipeCard(id, title, image);
-
-		});
+			});
+		}
 
 	} else if (searchArr.length <= itemsPerPage && searchArr.length > 0) {
 

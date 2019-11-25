@@ -50,6 +50,6 @@ export const pagination = (arr, itemsPerPage, currentPage) => {
 
 	const finalInd = itemsPerPage * currentPage;
 
-	return arr.slice(startInd, finalInd);
+	return arr.length >= itemsPerPage * currentPage ? arr.slice(startInd, finalInd) : null;
 
 };
