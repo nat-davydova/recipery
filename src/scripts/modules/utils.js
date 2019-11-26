@@ -56,5 +56,5 @@ export const pageSplit= (arr, itemsPerPage, currentPage) => {
 
 //pager script
 export const pagination = pager => {
-
+	console.log('I am pager');
 };
