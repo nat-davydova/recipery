@@ -18,7 +18,7 @@ const state = {};
 
 //*** SEARCH HANDLER
 
-const searchController = async (searchField, currentPage = 1) => {
+const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1) => {
 
 	//get search query from the search input
 	//const query = getInputVal(searchField);
@@ -63,7 +63,7 @@ const searchController = async (searchField, currentPage = 1) => {
 //*** INIT APP
 window.addEventListener('load', () => {
 	scrollbarsInit();
-	searchController(document.querySelector(DOM.search.field));
+	searchController();
 });
 
 //*** EVENT HANDLERS
@@ -76,7 +76,7 @@ document.addEventListener('click', e => {
 	if (target.closest(DOM.search.btn)) {
 
 		//implementing search
-		searchController(document.querySelector(DOM.search.field));
+		searchController();
 
 	}
 
@@ -111,7 +111,7 @@ document.addEventListener('keydown', e => {
 			e.preventDefault();
 
 			//implementing search
-			searchController(document.querySelector(DOM.search.field));
+			searchController();
 
 		}
 
