@@ -43,6 +43,19 @@ export const renderErrorMsg = (errorText, renderPlace) => {
 
 };
 
+//find a parent function
+export const findParent = (currentElem, parentClass) => {
+
+	while(! currentElem.classList.contains(parentClass)) {
+
+		currentElem = currentElem.parentNode;
+
+	}
+
+	return currentElem;
+
+};
+
 //splitting array to pages function
 export const pageSplit= (arr, itemsPerPage, currentPage) => {
 

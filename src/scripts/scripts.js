@@ -8,7 +8,7 @@ import * as searchView from './modules/views/searchView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
-import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput, pagination } from "./modules/utils";
+import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput, findParent } from "./modules/utils";
 
 //state
 //here stored:
@@ -98,7 +98,13 @@ document.addEventListener('click', e => {
 
 	//clicking on a recipe card
 	if(target.closest(DOM.recipeCard.moreBtn)) {
-		console.log('recipe!');
+
+		const btn = target.closest(DOM.recipeCard.moreBtn);
+
+		const recipeCard = findParent(btn, 'recipe-card');
+
+		console.log(recipeCard.dataset.id);
+
 	}
 
 });
