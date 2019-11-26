@@ -96,6 +96,11 @@ document.addEventListener('click', e => {
 		cleanInput(document.querySelector(DOM.search.field));
 	}
 
+	//clicking on a recipe card
+	if(target.closest(DOM.recipeCard.moreBtn)) {
+		console.log('recipe!');
+	}
+
 });
 
 document.addEventListener('keydown', e => {

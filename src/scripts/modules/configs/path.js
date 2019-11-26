@@ -19,6 +19,7 @@ export const DOM = {
 		card: document.querySelector('.recipe-card'),
 		img: '.recipe-card__img img',
 		title: '.recipe-card__title',
+		moreBtn: '.recipe-card__more',
 	},
 
 	searchResPanel: {
