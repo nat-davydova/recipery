@@ -53,3 +53,8 @@ export const pageSplit= (arr, itemsPerPage, currentPage) => {
 	return arr.length >= itemsPerPage * currentPage ? arr.slice(startInd, finalInd) : null;
 
 };
+
+//pager script
+export const pagination = pager => {
+
+};
