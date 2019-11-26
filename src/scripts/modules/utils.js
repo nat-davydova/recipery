@@ -55,7 +55,7 @@ export const pageSplit= (arr, itemsPerPage, currentPage) => {
 };
 
 //pagination script
-export const pagination = pager => {
+export const pagination = (pager) => {
 
 	//show pagination
 	showElem(pager);

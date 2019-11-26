@@ -30,6 +30,10 @@ export const DOM = {
 		recipeReturn: '.search-results .return-btn',
 	},
 
-	errorContainer: document.querySelector('.errorContainer')
+	errorContainer: document.querySelector('.errorContainer'),
+
+	pagination: {
+		paginationBtns: '.pagination__link',
+	}
 
 };

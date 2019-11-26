@@ -8,7 +8,7 @@ import * as searchView from './modules/views/searchView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
-import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput } from "./modules/utils";
+import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput, pagination } from "./modules/utils";
 
 //state
 //here stored:
