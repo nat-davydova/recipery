@@ -57,10 +57,7 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPa
 
 	if (searchArr.length > itemsPerPage) {
 
-		//show pagination, if there are more elems than displayed on 1 page
-		showElem(DOM.searchResPanel.pagination);
-
-		//pagination init
+		//pagination init, if there are more elems than displayed on 1 page
 		pagination(DOM.searchResPanel.pagination);
 
 		const pagedArr = pageSplit(searchArr, itemsPerPage, currentPage);
