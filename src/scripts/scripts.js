@@ -17,8 +17,7 @@ import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanI
 //- faved recipes
 const state = {};
 
-//*** SEARCH HANDLER
-
+//*** SEARCH CONTROLLER
 const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1) => {
 
 	//get search query from the search input
@@ -58,6 +57,11 @@ const searchController = async (searchField = document.querySelector(DOM.search.
 	}
 
 	console.log(state);
+
+};
+
+//*** RECIPE CONTROLLER
+const recipeController = async (recipeId) => {
 
 };
 
