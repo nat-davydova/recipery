@@ -26,7 +26,7 @@ const searchController = async (searchField, currentPage = 1) => {
 	const query = 'mushrooms';
 
 	//get search results
-	if(query && currentPage !== ) {
+	if(query) {
 
 		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
 		const searchQuery = searchView.multiWordsQuery(query);
