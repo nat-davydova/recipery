@@ -43,8 +43,8 @@ export const renderErrorMsg = (errorText, renderPlace) => {
 
 };
 
-//pagination function
-export const pagination = (arr, itemsPerPage, currentPage) => {
+//splitting array to pages function
+export const pageSplit= (arr, itemsPerPage, currentPage) => {
 
 	const startInd = itemsPerPage * currentPage - itemsPerPage;
 

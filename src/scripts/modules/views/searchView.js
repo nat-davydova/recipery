@@ -1,5 +1,5 @@
 import { DOM } from '../configs/path';
-import { renderErrorMsg, showElem, pagination } from "../utils";
+import { renderErrorMsg, showElem, pageSplit } from "../utils";
 
 //multiwords search query
 export const multiWordsQuery = (query) => {
@@ -60,7 +60,7 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPa
 		//show pagination, if there are more elems than displayed on 1 page
 		showElem(DOM.searchResPanel.pagination);
 
-		const pagedArr = pagination(searchArr, itemsPerPage, currentPage);
+		const pagedArr = pageSplit(searchArr, itemsPerPage, currentPage);
 
 		if(pagedArr) {
 			pagedArr.forEach(({id, title, image}) => {
