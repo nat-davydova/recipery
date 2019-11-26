@@ -2,6 +2,7 @@
 
 //import models
 import Search from "./modules/models/Search";
+import Recipe from './modules/models/Recipe';
 
 //import views
 import * as searchView from './modules/views/searchView';

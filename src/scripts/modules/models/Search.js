@@ -9,7 +9,7 @@ export default class Search {
 
 	};
 
-	//grabbing search results from API (10 items per request)
+	//grabbing search results from API (10 items per request by default)
 	getSearchResults = async num => {
 
 		try {
