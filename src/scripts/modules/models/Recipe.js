@@ -20,7 +20,9 @@ export default class Recipe {
 			console.log(fullRecipe);
 
 		} catch (e) {
+			console.log(e);
 
+			this.errorMessage = 'Sorry, something is wrong with the recipe search :( Try one more time!'
 		}
 
 	};
