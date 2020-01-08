@@ -63,6 +63,16 @@ const searchController = async (searchField = document.querySelector(DOM.search.
 //*** RECIPE CONTROLLER
 const recipeController = async (recipeId) => {
 
+	if(recipeId) {
+
+		state.currentRecipe = new Recipe(recipeId);
+
+		state.currentRecipe.grabFullRecipe();
+
+	}
+
+	console.log(state);
+
 };
 
 //*** INIT APP
@@ -108,7 +118,7 @@ document.addEventListener('click', e => {
 
 		const recipeCard = findParent(btn, 'recipe-card');
 
-		console.log(recipeCard.dataset.id);
+		recipeController(recipeCard.dataset.id);
 
 	}
 
