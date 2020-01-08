@@ -16,8 +16,7 @@ export default class Recipe {
 
 			const fullRecipe = await axios(`${apiURL}${recipeQuery}/?${apiKey}`);
 
-			console.log(`${apiURL}${recipeQuery}/?${apiKey}`);
-			console.log(fullRecipe);
+			this.fullRecipe = fullRecipe.data;
 
 		} catch (e) {
 			console.log(e);
