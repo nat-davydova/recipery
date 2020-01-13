@@ -45,7 +45,8 @@ export const DOM = {
 	},
 
 	returnBtns: {
-		recipeReturn: '.search-results .return-btn',
+		searchReturn: '.search-results .return-btn',
+		recipeReturn: '.recipe-full .return-btn',
 	},
 
 	errorContainer: document.querySelector('.errorContainer'),

@@ -114,7 +114,7 @@ document.addEventListener('click', e => {
 	}
 
 	//clicking on return btn from search panel
-	if(target.closest(DOM.returnBtns.recipeReturn)) {
+	if(target.closest(DOM.returnBtns.searchReturn)) {
 
 		//close search panel
 		hideElem(DOM.panels.searchRes);
@@ -127,6 +127,16 @@ document.addEventListener('click', e => {
 
 		//clean search input
 		cleanInput(document.querySelector(DOM.search.field));
+	}
+
+	//clicking on return btn from full recipe panel
+	if(target.closest(DOM.returnBtns.recipeReturn)) {
+
+		//close search panel
+		hideElem(DOM.panels.fullRecipe);
+
+		//show home panel
+		showElem(DOM.panels.searchRes);
 	}
 
 	//clicking on a recipe card
