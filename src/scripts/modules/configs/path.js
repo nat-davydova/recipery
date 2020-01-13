@@ -9,6 +9,7 @@ export const DOM = {
 		panelsArr: document.querySelectorAll('.panel'),
 		home: document.querySelector('.home-panel'),
 		searchRes: document.querySelector('.search-res-panel'),
+		fullRecipe: document.querySelector('.recipe-panel'),
 	},
 
 	loaders: {

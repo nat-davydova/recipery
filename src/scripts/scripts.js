@@ -65,9 +65,23 @@ const recipeController = async (recipeId) => {
 
 	if(recipeId) {
 
+		//create new recipe object based on the recipe id
 		state.currentRecipe = new Recipe(recipeId);
 
-		state.currentRecipe.grabFullRecipe();
+		//hide home panel
+		hideElem(DOM.panels.searchRes);
+
+		//show preloader
+		showElem(DOM.loaders.mainLoader);
+
+		//grabbing recipe data rom API
+		await state.currentRecipe.grabFullRecipe();
+
+		//hide loader
+		hideElem(DOM.loaders.mainLoader);
+
+		//show single result panel
+		showElem(DOM.panels.fullRecipe);
 
 	}
 
