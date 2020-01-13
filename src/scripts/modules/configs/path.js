@@ -30,6 +30,12 @@ export const DOM = {
 
 	fullRecipePanel: {
 		content: document.querySelector('.recipe-full__content'),
+		ingred: {
+			card: document.querySelector('.recipe-full__ingred'),
+			content: '.recipe-full__ingred-content p',
+			img: '.recipe-full__ingred-img img',
+		},
+		ingredList: document.querySelector('.recipe-full__ingreds-list'),
 		readyTime: document.querySelector('.ready-in-mins__content'),
 		recipe: document.querySelector('.recipe-full__content-inner'),
 		recipeImg: document.querySelector('.recipe-full__img img'),
