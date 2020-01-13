@@ -67,7 +67,7 @@ const recipeController = async (recipeId) => {
 	if(recipeId) {
 
 		//create new recipe object based on the recipe id
-		state.fullRecipe = new Recipe(recipeId);
+		state.fullRecipe = new Recipe('avava');
 
 		//hide home panel
 		hideElem(DOM.panels.searchRes);

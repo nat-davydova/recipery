@@ -29,7 +29,7 @@ export default class Recipe {
 		} catch (e) {
 			console.log(e);
 
-			this.errorMessage = 'Sorry, something is wrong with the recipe search :( Try one more time!'
+			this.errorMessage = 'Sorry, something is wrong with the recipe content :( Try one more time!'
 		}
 
 	};

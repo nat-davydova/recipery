@@ -28,6 +28,10 @@ export const DOM = {
 		pagination: document.querySelector('.search-results__pagination'),
 	},
 
+	fullRecipePanel: {
+		content: document.querySelector('.recipe-full__content'),
+	},
+
 	returnBtns: {
 		recipeReturn: '.search-results .return-btn',
 	},
