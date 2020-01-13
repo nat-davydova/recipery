@@ -9,4 +9,9 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 		return;
 	}
 
+	showElem(DOM.fullRecipePanel.recipe);
+
+	DOM.fullRecipePanel.recipeImg.setAttribute('src', recipeData.imgSource);
+	DOM.fullRecipePanel.recipeImg.setAttribute('alt', recipeData.title);
+
 };
