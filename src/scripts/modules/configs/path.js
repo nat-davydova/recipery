@@ -35,6 +35,7 @@ export const DOM = {
 		recipeImg: document.querySelector('.recipe-full__img img'),
 		servings: document.querySelector('.servings__content'),
 		title: document.querySelector('.recipe-full__title'),
+		url: document.querySelector('.recipe-full__more'),
 	},
 
 	returnBtns: {

@@ -16,11 +16,14 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 	//title handling
 	DOM.fullRecipePanel.title.textContent = recipeData.title;
 
-	//ready time
+	//ready time handling
 	DOM.fullRecipePanel.readyTime.textContent = `${recipeData.readyMins} mins`;
 
-	//servings
+	//servings handling
 	DOM.fullRecipePanel.servings.textContent = recipeData.servings;
+
+	//learn more url
+	DOM.fullRecipePanel.url.setAttribute('href', recipeData.url);
 
 	showElem(DOM.fullRecipePanel.recipe);
 };
