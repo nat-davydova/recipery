@@ -9,9 +9,12 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 		return;
 	}
 
-	showElem(DOM.fullRecipePanel.recipe);
-
+	//image handling
 	DOM.fullRecipePanel.recipeImg.setAttribute('src', recipeData.imgSource);
 	DOM.fullRecipePanel.recipeImg.setAttribute('alt', recipeData.title);
 
+	//title handling
+	DOM.fullRecipePanel.title.textContent = recipeData.title;
+
+	showElem(DOM.fullRecipePanel.recipe);
 };
