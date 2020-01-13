@@ -16,7 +16,15 @@ export default class Recipe {
 
 			const fullRecipe = await axios(`${apiURL}${recipeQuery}/?${apiKey}`);
 
-			this.fullRecipe = fullRecipe.data;
+			this.fullRecipeData = fullRecipe.data;
+
+			//grabbing info to use in the full recipe info
+			this.imgSource = this.fullRecipeData.image;
+			this.ingreds = this.fullRecipeData.extendedIngredients;
+			this.readyMins = this.fullRecipeData.readyInMinutes;
+			this.title = this.fullRecipeData.title;
+			this.servings = this.fullRecipeData.servings;
+			this.url = this.fullRecipeData.sourceUrl;
 
 		} catch (e) {
 			console.log(e);
