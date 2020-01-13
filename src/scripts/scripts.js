@@ -6,6 +6,7 @@ import Recipe from './modules/models/Recipe';
 
 //import views
 import * as searchView from './modules/views/searchView';
+import * as recipeView from './modules/views/recipeView';
 
 //import utils and configs
 import { DOM } from './modules/configs/path';
@@ -66,7 +67,7 @@ const recipeController = async (recipeId) => {
 	if(recipeId) {
 
 		//create new recipe object based on the recipe id
-		state.currentRecipe = new Recipe(recipeId);
+		state.fullRecipe = new Recipe(recipeId);
 
 		//hide home panel
 		hideElem(DOM.panels.searchRes);
@@ -75,13 +76,16 @@ const recipeController = async (recipeId) => {
 		showElem(DOM.loaders.mainLoader);
 
 		//grabbing recipe data rom API
-		await state.currentRecipe.grabFullRecipe();
+		await state.fullRecipe.grabFullRecipe();
 
 		//hide loader
 		hideElem(DOM.loaders.mainLoader);
 
 		//show single result panel
 		showElem(DOM.panels.fullRecipe);
+
+		//render full recipe info
+		recipeView.renderFullRecipe(state.fullRecipe, state.fullRecipe.errorMessage);
 
 	}
 
