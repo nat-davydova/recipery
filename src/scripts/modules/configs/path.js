@@ -30,8 +30,10 @@ export const DOM = {
 
 	fullRecipePanel: {
 		content: document.querySelector('.recipe-full__content'),
+		readyTime: document.querySelector('.ready-in-mins__content'),
 		recipe: document.querySelector('.recipe-full__content-inner'),
 		recipeImg: document.querySelector('.recipe-full__img img'),
+		servings: document.querySelector('.servings__content'),
 		title: document.querySelector('.recipe-full__title'),
 	},
 

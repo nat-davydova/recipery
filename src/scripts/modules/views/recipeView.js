@@ -16,5 +16,11 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 	//title handling
 	DOM.fullRecipePanel.title.textContent = recipeData.title;
 
+	//ready time
+	DOM.fullRecipePanel.readyTime.textContent = `${recipeData.readyMins} mins`;
+
+	//servings
+	DOM.fullRecipePanel.servings.textContent = recipeData.servings;
+
 	showElem(DOM.fullRecipePanel.recipe);
 };
