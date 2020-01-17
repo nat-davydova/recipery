@@ -162,7 +162,12 @@ document.addEventListener('click', e => {
 		state.search.currentPage = currentPage;
 
 		if(currentPage * state.search.itemsPerPage <= state.search.results.length) {
+
 			searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage);
+
+			let searchResPrevBtn = document.querySelector(searchResPrev).parentNode;
+
+			searchResPrevBtn.classList.remove('disabled');
 
 			if (currentPage * state.search.itemsPerPage === state.search.results.length) {
 				let searchResNextBtn = document.querySelector(searchResNext).parentNode;
