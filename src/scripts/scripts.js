@@ -177,6 +177,28 @@ document.addEventListener('click', e => {
 		}
 	}
 
+	if(target.closest(searchResPrev)) {
+
+		let currentPage = state.search.currentPage - 1;
+
+		state.search.currentPage = currentPage;
+
+		if(currentPage * state.search.itemsPerPage >= state.search.itemsPerPage) {
+
+			searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage);
+
+			let searchResNextBtn = document.querySelector(searchResNext).parentNode;
+
+			searchResNextBtn.classList.remove('disabled');
+
+			if (currentPage * state.search.itemsPerPage === state.search.itemsPerPage) {
+				let searchResPrevBtn = document.querySelector(searchResPrev).parentNode;
+
+				searchResPrevBtn.classList.add('disabled');
+			}
+		}
+	}
+
 });
 
 document.addEventListener('keydown', e => {
