@@ -25,7 +25,7 @@ export const DOM = {
 
 	searchResPanel: {
 		results: document.querySelector('.search-results__results'),
-		pagination: document.querySelector('.search-results__pagination'),
+		pagination: '.search-results__pagination',
 	},
 
 	fullRecipePanel: {
@@ -50,9 +50,4 @@ export const DOM = {
 	},
 
 	errorContainer: document.querySelector('.errorContainer'),
-
-	pagination: {
-		paginationBtns: '.pagination__link',
-	}
-
 };

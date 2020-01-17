@@ -42,7 +42,7 @@ const searchController = async (searchField = document.querySelector(DOM.search.
 		showElem(DOM.loaders.mainLoader);
 
 		//grabbing search results from API
-		await state.search.getSearchResults(25); //number - items per request (min - 1, max - 100)
+		await state.search.getSearchResults(15); //number - items per request (min - 1, max - 100)
 
 		//hide loader
 		hideElem(DOM.loaders.mainLoader);
@@ -152,7 +152,10 @@ document.addEventListener('click', e => {
 
 	//clicking on next button of search pager
 
-	if(target.closest(`${DOM.pagination.paginationBtns}[tabindex = "+1"]`)) {
+	const searchResNext = `${DOM.searchResPanel.pagination} a[tabindex = "+1"]`;
+	const searchResPrev = `${DOM.searchResPanel.pagination} a[tabindex = "-1"]`;
+
+	if(target.closest(searchResNext)) {
 
 		let currentPage = state.search.currentPage + 1;
 
@@ -160,6 +163,12 @@ document.addEventListener('click', e => {
 
 		if(currentPage * state.search.itemsPerPage <= state.search.results.length) {
 			searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage);
+
+			if (currentPage * state.search.itemsPerPage === state.search.results.length) {
+				let searchResNextBtn = document.querySelector(searchResNext).parentNode;
+
+				searchResNextBtn.classList.add('disabled');
+			}
 		}
 	}
 
