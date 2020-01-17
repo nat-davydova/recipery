@@ -154,7 +154,9 @@ document.addEventListener('click', e => {
 
 	if(target.closest(`${DOM.pagination.paginationBtns}[tabindex = "+1"]`)) {
 
-		let currentPage = state.search.currentPage++;
+		let currentPage = state.search.currentPage + 1;
+
+		console.log(currentPage);
 
 		searchController(document.querySelector(DOM.search.field), currentPage);
 	}
