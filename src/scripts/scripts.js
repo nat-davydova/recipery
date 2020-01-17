@@ -19,7 +19,7 @@ import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanI
 const state = {};
 
 //*** SEARCH CONTROLLER
-const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1) => {
+const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
 
 	//get search query from the search input
 	//const query = getInputVal(searchField);
@@ -51,8 +51,8 @@ const searchController = async (searchField = document.querySelector(DOM.search.
 		showElem(DOM.panels.searchRes);
 
 		//render search results (number - items per page number, for pagination)
-		state.search.currentPage = 1;
-		state.search.itemsPerPage = 5;
+		state.search.currentPage = currentPage;
+		state.search.itemsPerPage = itemsPerPage;
 
 		searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage);
 	}
@@ -148,6 +148,15 @@ document.addEventListener('click', e => {
 
 		recipeController(recipeCard.dataset.id);
 
+	}
+
+	//clicking on next button of search pager
+
+	if(target.closest(`${DOM.pagination.paginationBtns}[tabindex = "+1"]`)) {
+
+		let currentPage = state.search.currentPage++;
+
+		searchController(document.querySelector(DOM.search.field), currentPage);
 	}
 
 });

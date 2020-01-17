@@ -57,7 +57,7 @@ export const findParent = (currentElem, parentClass) => {
 };
 
 //splitting array to pages function
-export const pageSplit= (arr, itemsPerPage, currentPage) => {
+export const pageSplit = (arr, itemsPerPage, currentPage) => {
 
 	const startInd = itemsPerPage * currentPage - itemsPerPage;
 
@@ -68,9 +68,8 @@ export const pageSplit= (arr, itemsPerPage, currentPage) => {
 };
 
 //pagination script
-export const pagination = (pager) => {
+export const pagination = (pagination, arr, itemsPerPage, currentPage) => {
 
-	//show pagination
-	showElem(pager);
-
+	//page splitting
+	return pageSplit(arr, itemsPerPage, currentPage);
 };
