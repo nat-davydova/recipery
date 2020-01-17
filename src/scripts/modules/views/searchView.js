@@ -55,6 +55,10 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPa
 		return;
 	}
 
+	//clear UI
+	DOM.searchResPanel.results.innerHTML = '';
+
+	//render results
 	if (searchArr.length > itemsPerPage) {
 
 		//pagination init, if there are more elems than displayed on 1 page
