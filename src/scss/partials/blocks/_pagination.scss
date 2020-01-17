@@ -3,6 +3,17 @@ $pagination-base: $base;
 $pagination-accent: $accent;
 $pagination-light: $light;
 
+.pagination__item {
+
+	&.active > .pagination__link {
+
+		color: $pagination-light;
+
+		background-color: $pagination-base;
+		border-color: $pagination-base;
+	}
+}
+
 .pagination__link {
 	@include transition-mix();
 
@@ -16,13 +27,4 @@ $pagination-light: $light;
 	}
 }
 
-.pagination__item {
 
-	&.active > .pagination__link {
-
-		color: $pagination-light;
-
-		background-color: $pagination-base;
-		border-color: $pagination-base;
-	}
-}
