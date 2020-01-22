@@ -1,5 +1,5 @@
 import { DOM } from '../configs/path';
-import { renderErrorMsg, showElem, pagination } from "../utils";
+import { renderErrorMsg, showElem, pagination, cleanElemInner } from "../utils";
 
 //multiwords search query
 export const multiWordsQuery = (query) => {
@@ -56,7 +56,7 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPa
 	}
 
 	//clear UI
-	DOM.searchResPanel.results.innerHTML = '';
+	cleanElemInner(DOM.searchResPanel.results);
 
 	//render results
 	if (searchArr.length > itemsPerPage) {
