@@ -18,6 +18,7 @@ export const DOM = {
 
 	recipeCard: {
 		card: document.querySelector('.recipe-card'),
+		cardClass: '.recipe-card',
 		img: '.recipe-card__img img',
 		title: '.recipe-card__title',
 		moreBtn: '.recipe-card__more',
@@ -30,6 +31,7 @@ export const DOM = {
 
 	fullRecipePanel: {
 		content: document.querySelector('.recipe-full__content'),
+		contentClass: '.recipe-full__content',
 		ingred: {
 			card: document.querySelector('.recipe-full__ingred'),
 			content: '.recipe-full__ingred-content p',
@@ -49,7 +51,11 @@ export const DOM = {
 		recipeReturn: '.recipe-full .return-btn',
 	},
 
-	toFavBtn: '.to-fav',
+	favBtns: {
+		toFavBtn: '.to-fav',
+		recipeCardFav: '.recipe-card__to-fav',
+		fullRecipeFav: '.recipe-full__to-fav'
+	},
 
 	errorContainer: document.querySelector('.errorContainer'),
 };

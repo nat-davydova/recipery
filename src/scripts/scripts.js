@@ -102,14 +102,16 @@ const favsController = elem => {
 	let isLiked;
 
 	if(elem) {
-		isLiked = elem.dataset.isLiked;
+		//isLiked = elem.dataset.isLiked;
+
+		console.log(elem);
 	}
 
-	if(elem && isLiked) {
-
-	} else if(elem && !isLiked) {
-
-	}
+	// if(elem && isLiked) {
+	//
+	// } else if(elem && !isLiked) {
+	//
+	// }
 
 };
 
@@ -222,7 +224,21 @@ document.addEventListener('click', e => {
 
 	//clicking on favs button on recipe card or full recipe
 	if(target.closest(DOM.toFavBtn)) {
-		console.log('fav');
+
+		const favBtnItem = findParent(target, DOM.toFavBtn.slice(1, DOM.toFavBtn.length));
+
+		let favBtn;
+
+		if(favBtnItem.classList.contains()) {
+
+		} else {
+
+		}
+
+		let recipeToFav;
+
+		favsController(recipeToFav);
+
 	}
 
 });
