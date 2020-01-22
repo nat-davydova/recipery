@@ -93,10 +93,22 @@ const recipeController = async (recipeId) => {
 };
 
 //*** FAVS CONTROLLER
-const favsController = () => {
+const favsController = elem => {
 
 	if(!state.favs) {
 		state.favs = new Favs();
+	}
+
+	let isLiked;
+
+	if(elem) {
+		isLiked = elem.dataset.isLiked;
+	}
+
+	if(elem && isLiked) {
+
+	} else if(elem && !isLiked) {
+
 	}
 
 };
