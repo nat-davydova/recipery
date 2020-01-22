@@ -22,9 +22,7 @@ const state = {};
 const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
 
 	//get search query from the search input
-	//const query = getInputVal(searchField);
-
-	const query = 'mushrooms';
+	const query = getInputVal(searchField);
 
 	//get search results
 	if(query) {
