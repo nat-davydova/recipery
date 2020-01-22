@@ -220,6 +220,11 @@ document.addEventListener('click', e => {
 		}
 	}
 
+	//clicking on favs button on recipe card or full recipe
+	if(target.closest(DOM.toFavBtn)) {
+		console.log('fav');
+	}
+
 });
 
 document.addEventListener('keydown', e => {

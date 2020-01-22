@@ -4,4 +4,8 @@ export default class Favs {
 		this.favsList = [];
 	}
 
+	addToFav () {
+
+	}
+
 };

@@ -49,5 +49,7 @@ export const DOM = {
 		recipeReturn: '.recipe-full .return-btn',
 	},
 
+	toFavBtn: '.to-fav',
+
 	errorContainer: document.querySelector('.errorContainer'),
 };

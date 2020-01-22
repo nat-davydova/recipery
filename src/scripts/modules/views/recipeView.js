@@ -28,6 +28,9 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 		return;
 	}
 
+	//id addition
+	DOM.fullRecipePanel.content.dataset.id = recipeData.id;
+
 	//image handling
 	DOM.fullRecipePanel.recipeImg.setAttribute('src', recipeData.imgSource);
 	DOM.fullRecipePanel.recipeImg.setAttribute('alt', recipeData.title);
