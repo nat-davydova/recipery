@@ -92,10 +92,20 @@ const recipeController = async (recipeId) => {
 
 };
 
+//*** FAVS CONTROLLER
+const favsController = () => {
+
+	if(!state.favs) {
+		state.favs = new Favs();
+	}
+
+};
+
 //*** INIT APP
 window.addEventListener('load', () => {
 	scrollbarsInit();
 	searchController();
+	favsController();
 });
 
 //*** EVENT HANDLERS
