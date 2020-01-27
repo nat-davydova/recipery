@@ -4,17 +4,12 @@ export default class Favs {
 		this.favsList = [];
 	}
 
-	addToFav (elem) {
-		let id = elem.dataset.id;
+	addToFav (id) {
 		this.favsList.push(id);
-		elem.dataset.isLiked = 'liked';
 	}
 
-	removeFromFav (elem) {
-		let id = elem.dataset.id;
-
+	removeFromFav (id) {
 		const index = this.favsList.findIndex(ind => id === ind);
-
 		this.favsList.splice(index, 1);
 	}
 
