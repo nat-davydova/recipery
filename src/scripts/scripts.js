@@ -102,11 +102,14 @@ const favsController = elem => {
 
 	let isLiked = elem.dataset.isLiked;
 
-	if(isLiked) {
+	if(isLiked === 'liked') {
 		console.log('liked');
 	} else {
 		console.log('not liked');
+		state.favs.addToFav(elem);
 	}
+
+	console.log(state.favs);
 
 };
 
@@ -114,7 +117,7 @@ const favsController = elem => {
 window.addEventListener('load', () => {
 	scrollbarsInit();
 	searchController();
-	favsController();
+	//favsController();
 });
 
 //*** EVENT HANDLERS

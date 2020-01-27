@@ -4,8 +4,10 @@ export default class Favs {
 		this.favsList = [];
 	}
 
-	addToFav () {
-
+	addToFav (elem) {
+		let id = elem.dataset.id;
+		this.favsList.push(id);
+		elem.dataset.isLiked = 'liked';
 	}
 
 };
