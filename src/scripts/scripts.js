@@ -23,7 +23,8 @@ const state = {};
 const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
 
 	//get search query from the search input
-	const query = getInputVal(searchField);
+	//const query = getInputVal(searchField);
+	const query = 'apple';
 
 	//get search results
 	if(query) {
@@ -223,21 +224,25 @@ document.addEventListener('click', e => {
 	}
 
 	//clicking on favs button on recipe card or full recipe
-	if(target.closest(DOM.toFavBtn)) {
+	if(target.closest(DOM.favBtns.toFavBtn) || target.closest(DOM.favBtns.favIcons)) {
 
-		const favBtnItem = findParent(target, DOM.toFavBtn.slice(1, DOM.toFavBtn.length));
+		let favBtn = target;
 
-		let favBtn;
-
-		if(favBtnItem.classList.contains()) {
-
-		} else {
-
+		//if we click on btn children - move to a btn itself
+		if(target.closest(DOM.favBtns.favIcons)) {
+			favBtn = target.parentNode;
 		}
 
-		let recipeToFav;
+		//find parent element which contains recipe
+		let recipeElem;
 
-		favsController(recipeToFav);
+		if(favBtn.classList.contains(DOM.favBtns.recipeCardFav.slice(1))) {
+			recipeElem = findParent(favBtn, DOM.recipeCard.cardClass.slice(1));
+		} else {
+			recipeElem = findParent(favBtn, DOM.fullRecipePanel.contentClass.slice(1));
+		}
+
+		favsController(recipeElem);
 
 	}
 

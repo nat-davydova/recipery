@@ -53,6 +53,7 @@ export const DOM = {
 
 	favBtns: {
 		toFavBtn: '.to-fav',
+		favIcons: '.to-fav i',
 		recipeCardFav: '.recipe-card__to-fav',
 		fullRecipeFav: '.recipe-full__to-fav'
 	},
