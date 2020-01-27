@@ -100,19 +100,13 @@ const favsController = elem => {
 		state.favs = new Favs();
 	}
 
-	let isLiked;
+	let isLiked = elem.dataset.isLiked;
 
-	if(elem) {
-		//isLiked = elem.dataset.isLiked;
-
-		console.log(elem);
+	if(isLiked) {
+		console.log('liked');
+	} else {
+		console.log('not liked');
 	}
-
-	// if(elem && isLiked) {
-	//
-	// } else if(elem && !isLiked) {
-	//
-	// }
 
 };
 
