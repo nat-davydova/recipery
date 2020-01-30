@@ -51,12 +51,5 @@ export const DOM = {
 		recipeReturn: '.recipe-full .return-btn',
 	},
 
-	favBtns: {
-		toFavBtn: '.to-fav',
-		favIcons: '.to-fav i',
-		recipeCardFav: '.recipe-card__to-fav',
-		fullRecipeFav: '.recipe-full__to-fav'
-	},
-
 	errorContainer: document.querySelector('.errorContainer'),
 };
