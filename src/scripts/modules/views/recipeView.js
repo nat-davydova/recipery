@@ -1,5 +1,5 @@
 import { DOM } from '../configs/path';
-import { renderErrorMsg, showElem } from "../utils";
+import { renderErrorMsg, showElem, cleanElemInner } from "../utils";
 
 const renderIngredient = (img, title, text) => {
 
@@ -48,6 +48,8 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 	DOM.fullRecipePanel.servings.textContent = recipeData.servings;
 
 	//ingredients rendering
+	cleanElemInner(DOM.fullRecipePanel.ingredList);
+
 	recipeData.ingreds.forEach(({image, name, original}) => renderIngredient(image, name, original));
 
 	//learn more url
