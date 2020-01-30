@@ -33,9 +33,8 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 
 	//image handling
 
-	let imgSource = recipeData.imgSource || '../assets/img/default-food.jpg';
+	recipeData.imgSource && DOM.fullRecipePanel.recipeImg.setAttribute('src', recipeData.imgSource);
 
-	DOM.fullRecipePanel.recipeImg.setAttribute('src', imgSource);
 	DOM.fullRecipePanel.recipeImg.setAttribute('alt', recipeData.title);
 
 	//title handling
