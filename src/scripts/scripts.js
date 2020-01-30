@@ -105,10 +105,10 @@ const favsController = elem => {
 
 	if(isLiked === 'liked') {
 		state.favs.removeFromFav(id);
-		elem.dataset.isLiked = 'liked';
+		elem.dataset.isLiked = '';
 	} else {
 		state.favs.addToFav(id);
-		elem.dataset.isLiked = '';
+		elem.dataset.isLiked = 'liked';
 	}
 
 	console.log(state.favs);
