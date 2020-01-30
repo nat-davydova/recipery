@@ -3,7 +3,6 @@
 //import models
 import Search from "./modules/models/Search";
 import Recipe from './modules/models/Recipe';
-import Favs from './modules/models/Favs';
 
 //import views
 import * as searchView from './modules/views/searchView';
@@ -23,8 +22,7 @@ const state = {};
 const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
 
 	//get search query from the search input
-	//const query = getInputVal(searchField);
-	const query = 'apple';
+	const query = getInputVal(searchField);
 
 	//get search results
 	if(query) {
@@ -93,33 +91,11 @@ const recipeController = async (recipeId) => {
 
 };
 
-//*** FAVS CONTROLLER
-const favsController = elem => {
-
-	if(!state.favs) {
-		state.favs = new Favs();
-	}
-
-	let isLiked = elem.dataset.isLiked;
-	let id = elem.dataset.id;
-
-	if(isLiked === 'liked') {
-		state.favs.removeFromFav(id);
-		elem.dataset.isLiked = '';
-	} else {
-		state.favs.addToFav(id);
-		elem.dataset.isLiked = 'liked';
-	}
-
-	console.log(state.favs);
-
-};
 
 //*** INIT APP
 window.addEventListener('load', () => {
 	scrollbarsInit();
 	searchController();
-	//favsController();
 });
 
 //*** EVENT HANDLERS
@@ -220,29 +196,6 @@ document.addEventListener('click', e => {
 				searchResPrevBtn.classList.add('disabled');
 			}
 		}
-	}
-
-	//clicking on favs button on recipe card or full recipe
-	if(target.closest(DOM.favBtns.toFavBtn) || target.closest(DOM.favBtns.favIcons)) {
-
-		let favBtn = target;
-
-		//if we click on btn children - move to a btn itself
-		if(target.closest(DOM.favBtns.favIcons)) {
-			favBtn = target.parentNode;
-		}
-
-		//find parent element which contains recipe
-		let recipeElem;
-
-		if(favBtn.classList.contains(DOM.favBtns.recipeCardFav.slice(1))) {
-			recipeElem = findParent(favBtn, DOM.recipeCard.cardClass.slice(1));
-		} else {
-			recipeElem = findParent(favBtn, DOM.fullRecipePanel.contentClass.slice(1));
-		}
-
-		favsController(recipeElem);
-
 	}
 
 });
