@@ -18,7 +18,6 @@ export const DOM = {
 
 	recipeCard: {
 		card: document.querySelector('.recipe-card'),
-		cardClass: '.recipe-card',
 		img: '.recipe-card__img img',
 		title: '.recipe-card__title',
 		moreBtn: '.recipe-card__more',
@@ -31,7 +30,6 @@ export const DOM = {
 
 	fullRecipePanel: {
 		content: document.querySelector('.recipe-full__content'),
-		contentClass: '.recipe-full__content',
 		ingred: {
 			card: document.querySelector('.recipe-full__ingred'),
 			content: '.recipe-full__ingred-content p',
