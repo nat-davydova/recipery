@@ -148,7 +148,7 @@ document.addEventListener('click', e => {
 
 	//clicking on next button of search pager
 
-	const searchResNext = `${DOM.searchResPanel.pagination} a[tabindex = "+1"]`;
+	const searchResNext = `${DOM.searchResPanel.pagination} a[tabindex = "1"]`;
 	const searchResPrev = `${DOM.searchResPanel.pagination} a[tabindex = "-1"]`;
 
 	if(target.closest(searchResNext)) {
