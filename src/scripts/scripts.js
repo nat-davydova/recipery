@@ -27,11 +27,8 @@ const searchController = async (searchField = document.querySelector(DOM.search.
 	//get search results
 	if(query) {
 
-		//multiwords query improvement (must be ingred1,+ingred2,+ingred3... etc)
-		const searchQuery = searchView.multiWordsQuery(query);
-
 		//create new search object based on the search query
-		state.search = new Search(searchQuery);
+		state.search = new Search(query);
 
 		//hide home panel
 		hideElem(DOM.panels.home);

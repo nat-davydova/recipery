@@ -1,11 +1,33 @@
 import axios from 'axios';
 import { recipeApi } from "../configs/apiKeys";
 
+const multiWordsQuery = (query) => {
+
+	const queryArr = query.split(' ');
+
+	let newQueryArr;
+
+	if(queryArr.length > 1) {
+
+		newQueryArr = queryArr.map((elem, index) => {
+
+			return index === 0 ? elem : `+${elem}`;
+
+		});
+
+		query = newQueryArr.join(',');
+
+	}
+
+	return query;
+
+};
+
 export default class Search {
 
 	constructor(searchQuery) {
 
-		this.searchQuery = searchQuery;
+		this.searchQuery = multiWordsQuery(searchQuery);
 
 	};
 
