@@ -40,7 +40,7 @@ const searchController = async (searchField = document.querySelector(DOM.search.
 		showElem(DOM.loaders.mainLoader);
 
 		//grabbing search results from API
-		await state.search.getSearchResults(15); //number - items per request (min - 1, max - 100)
+		await state.search.getSearchResults(70); //number - items per request (min - 1, max - 100)
 
 		//hide loader
 		hideElem(DOM.loaders.mainLoader);
