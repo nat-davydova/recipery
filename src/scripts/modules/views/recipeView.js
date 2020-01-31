@@ -9,7 +9,7 @@ const renderIngredient = (img, title, text) => {
 
 	const cardImg = card.querySelector(DOM.fullRecipePanel.ingred.img);
 
-	cardImg.setAttribute('src', `https://spoonacular.com/cdn/ingredients_250x250/${img}`);
+	img && cardImg.setAttribute('src', `https://spoonacular.com/cdn/ingredients_250x250/${img}`);
 	cardImg.setAttribute('alt', title);
 
 	const cardContent = card.querySelector(DOM.fullRecipePanel.ingred.content);
@@ -20,7 +20,7 @@ const renderIngredient = (img, title, text) => {
 
 };
 
-export const renderFullRecipe = (recipeData, errorMsg) => {
+export const renderFullRecipe = ({id, imgSource, title, readyMins, servings, ingreds, url}, errorMsg) => {
 
 	if(errorMsg) {
 		renderErrorMsg(errorMsg, DOM.fullRecipePanel.content);
@@ -29,30 +29,30 @@ export const renderFullRecipe = (recipeData, errorMsg) => {
 	}
 
 	//id addition
-	DOM.fullRecipePanel.content.dataset.id = recipeData.id;
+	DOM.fullRecipePanel.content.dataset.id = id;
 
 	//image handling
 
-	recipeData.imgSource && DOM.fullRecipePanel.recipeImg.setAttribute('src', recipeData.imgSource);
+	imgSource && DOM.fullRecipePanel.recipeImg.setAttribute('src', imgSource);
 
-	DOM.fullRecipePanel.recipeImg.setAttribute('alt', recipeData.title);
+	DOM.fullRecipePanel.recipeImg.setAttribute('alt', title);
 
 	//title handling
-	DOM.fullRecipePanel.title.textContent = recipeData.title;
+	DOM.fullRecipePanel.title.textContent = title;
 
 	//ready time handling
-	DOM.fullRecipePanel.readyTime.textContent = `${recipeData.readyMins} mins`;
+	DOM.fullRecipePanel.readyTime.textContent = `${readyMins} mins`;
 
 	//servings handling
-	DOM.fullRecipePanel.servings.textContent = recipeData.servings;
+	DOM.fullRecipePanel.servings.textContent = servings;
 
 	//ingredients rendering
 	cleanElemInner(DOM.fullRecipePanel.ingredList);
 
-	recipeData.ingreds.forEach(({image, name, original}) => renderIngredient(image, name, original));
+	ingreds.forEach(({image, name, original}) => renderIngredient(image, name, original));
 
 	//learn more url
-	DOM.fullRecipePanel.url.setAttribute('href', recipeData.url);
+	DOM.fullRecipePanel.url.setAttribute('href', url);
 
 	showElem(DOM.fullRecipePanel.recipe);
 };
