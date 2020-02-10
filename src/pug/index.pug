@@ -16,27 +16,29 @@ html(lang="en")
 
                 .container.main-container
 
-                    //preloader
+                    //PRELOADER
                     include includes/blocks/preloader
 
+                    //CONTENT PANELS
+
+                    //HOME BLOCK
                     .row.home-panel.panel
                         .col
-                            //HOME BLOCK
                             include includes/blocks/home
 
+                    //SEARCH RESULTS
                     .row.search-res-panel.panel.js-hidden
                         .col
-                            //SEARCH RESULTS
                             include includes/blocks/search-results
 
+                    //SINGLE RECIPE INFO
                     .row.recipe-panel.panel.js-hidden
                         .col
-                            //SINGLE RECIPE INFO
                             include includes/blocks/recipe
 
                     .row
                         .col
-                            //error message
+                            //- ERROR MSG
                             include includes/blocks/error
 
         script(src="scripts/scripts.min.js")
