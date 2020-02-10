@@ -1,219 +1,192 @@
-//APP CONTROLLER
+// APP CONTROLLER
 
-//import models
-import Search from "./modules/models/Search";
-import Recipe from './modules/models/Recipe';
+// import models
+import Search from './modules/models/Search'
+import Recipe from './modules/models/Recipe'
 
-//import views
-import * as searchView from './modules/views/searchView';
-import * as recipeView from './modules/views/recipeView';
+// import views
+import * as searchView from './modules/views/searchView'
+import * as recipeView from './modules/views/recipeView'
 
-//import utils and configs
-import { DOM } from './modules/configs/path';
-import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput, findParent } from "./modules/utils";
+// import utils and configs
+import { DOM } from './modules/configs/path'
+import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput, findParent } from './modules/utils'
 
-//state
-//here stored:
-//- search query
-//- faved recipes
-const state = {};
+// state
+// here stored:
+// search query
+// full recipes
+const state = {}
 
-//*** SEARCH CONTROLLER
+// *** SEARCH CONTROLLER
 const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
+  // get search query from the search input
+  const query = getInputVal(searchField)
 
-	//get search query from the search input
-	const query = getInputVal(searchField);
+  // get search results
+  if (query) {
+    // create new search object based on the search query
+    state.search = new Search(query)
 
-	//get search results
-	if(query) {
+    // hide home panel
+    hideElem(DOM.panels.home)
 
-		//create new search object based on the search query
-		state.search = new Search(query);
+    // show preloader
+    showElem(DOM.loaders.mainLoader)
 
-		//hide home panel
-		hideElem(DOM.panels.home);
+    // grabbing search results from API
+    await state.search.getSearchResults(70) // number - items per request (min - 1, max - 100)
 
-		//show preloader
-		showElem(DOM.loaders.mainLoader);
+    // hide loader
+    hideElem(DOM.loaders.mainLoader)
 
-		//grabbing search results from API
-		await state.search.getSearchResults(70); //number - items per request (min - 1, max - 100)
+    // show results panel
+    showElem(DOM.panels.searchRes)
 
-		//hide loader
-		hideElem(DOM.loaders.mainLoader);
+    // render search results (number - items per page number, for pagination)
+    state.search.currentPage = currentPage
+    state.search.itemsPerPage = itemsPerPage
 
-		//show results panel
-		showElem(DOM.panels.searchRes);
+    searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage)
+  }
 
-		//render search results (number - items per page number, for pagination)
-		state.search.currentPage = currentPage;
-		state.search.itemsPerPage = itemsPerPage;
+  console.log(state)
+}
 
-		searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage);
-	}
-
-	console.log(state);
-
-};
-
-//*** RECIPE CONTROLLER
+// *** RECIPE CONTROLLER
 const recipeController = async (recipeId) => {
+  if (recipeId) {
+    // create new recipe object based on the recipe id
+    state.fullRecipe = new Recipe(recipeId)
 
-	if(recipeId) {
+    // hide home panel
+    hideElem(DOM.panels.searchRes)
 
-		//create new recipe object based on the recipe id
-		state.fullRecipe = new Recipe(recipeId);
+    // show preloader
+    showElem(DOM.loaders.mainLoader)
 
-		//hide home panel
-		hideElem(DOM.panels.searchRes);
+    // grabbing recipe data rom API
+    await state.fullRecipe.grabFullRecipe()
 
-		//show preloader
-		showElem(DOM.loaders.mainLoader);
+    // hide loader
+    hideElem(DOM.loaders.mainLoader)
 
-		//grabbing recipe data rom API
-		await state.fullRecipe.grabFullRecipe();
+    // show single result panel
+    showElem(DOM.panels.fullRecipe)
 
-		//hide loader
-		hideElem(DOM.loaders.mainLoader);
+    // render full recipe info
+    recipeView.renderFullRecipe(state.fullRecipe, state.fullRecipe.errorMessage)
+  }
 
-		//show single result panel
-		showElem(DOM.panels.fullRecipe);
+  console.log(state)
+}
 
-		//render full recipe info
-		recipeView.renderFullRecipe(state.fullRecipe, state.fullRecipe.errorMessage);
-
-	}
-
-	console.log(state);
-
-};
-
-
-//*** INIT APP
+// *** INIT APP
 window.addEventListener('load', () => {
-	scrollbarsInit();
-	searchController();
-});
+  scrollbarsInit()
+  searchController()
+})
 
-//*** EVENT HANDLERS
+// *** EVENT HANDLERS
 
 document.addEventListener('click', e => {
+  const target = e.target
 
-	const target = e.target;
+  // clicking on search buttons
+  if (target.closest(DOM.search.btn)) {
+    // implementing search
+    searchController()
+  }
 
-	//clicking on search buttons
-	if (target.closest(DOM.search.btn)) {
+  // clicking on return btn from search panel
+  if (target.closest(DOM.returnBtns.searchReturn)) {
+    // close search panel
+    hideElem(DOM.panels.searchRes)
 
-		//implementing search
-		searchController();
+    // show home panel
+    showElem(DOM.panels.home)
 
-	}
+    // clean search results
+    cleanElemInner(DOM.searchResPanel.results)
 
-	//clicking on return btn from search panel
-	if(target.closest(DOM.returnBtns.searchReturn)) {
+    // clean search input
+    cleanInput(document.querySelector(DOM.search.field))
+  }
 
-		//close search panel
-		hideElem(DOM.panels.searchRes);
+  // clicking on return btn from full recipe panel
+  if (target.closest(DOM.returnBtns.recipeReturn)) {
+    // close search panel
+    hideElem(DOM.panels.fullRecipe)
 
-		//show home panel
-		showElem(DOM.panels.home);
+    // show home panel
+    showElem(DOM.panels.searchRes)
+  }
 
-		//clean search results
-		cleanElemInner(DOM.searchResPanel.results);
+  // clicking on a recipe card
+  if (target.closest(DOM.recipeCard.moreBtn)) {
+    const btn = target.closest(DOM.recipeCard.moreBtn)
+    const recipeCard = findParent(btn, 'recipe-card')
 
-		//clean search input
-		cleanInput(document.querySelector(DOM.search.field));
-	}
+    recipeController(recipeCard.dataset.id)
+  }
 
-	//clicking on return btn from full recipe panel
-	if(target.closest(DOM.returnBtns.recipeReturn)) {
+  // clicking on next button of search pager
 
-		//close search panel
-		hideElem(DOM.panels.fullRecipe);
+  const searchResNext = `${DOM.searchResPanel.pagination} a[tabindex = "1"]`
+  const searchResPrev = `${DOM.searchResPanel.pagination} a[tabindex = "-1"]`
 
-		//show home panel
-		showElem(DOM.panels.searchRes);
-	}
+  if (target.closest(searchResNext)) {
+    const currentPage = state.search.currentPage + 1
 
-	//clicking on a recipe card
-	if(target.closest(DOM.recipeCard.moreBtn)) {
+    state.search.currentPage = currentPage
 
-		const btn = target.closest(DOM.recipeCard.moreBtn);
+    if (currentPage * state.search.itemsPerPage <= state.search.results.length) {
+      searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage)
 
-		const recipeCard = findParent(btn, 'recipe-card');
+      const searchResPrevBtn = document.querySelector(searchResPrev).parentNode
 
-		recipeController(recipeCard.dataset.id);
+      searchResPrevBtn.classList.remove('disabled')
 
-	}
+      if (currentPage * state.search.itemsPerPage === state.search.results.length) {
+        const searchResNextBtn = document.querySelector(searchResNext).parentNode
 
-	//clicking on next button of search pager
+        searchResNextBtn.classList.add('disabled')
+      }
+    }
+  }
 
-	const searchResNext = `${DOM.searchResPanel.pagination} a[tabindex = "1"]`;
-	const searchResPrev = `${DOM.searchResPanel.pagination} a[tabindex = "-1"]`;
+  if (target.closest(searchResPrev)) {
+    const currentPage = state.search.currentPage - 1
 
-	if(target.closest(searchResNext)) {
+    state.search.currentPage = currentPage
 
-		let currentPage = state.search.currentPage + 1;
+    if (currentPage * state.search.itemsPerPage >= state.search.itemsPerPage) {
+      searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage)
 
-		state.search.currentPage = currentPage;
+      const searchResNextBtn = document.querySelector(searchResNext).parentNode
 
-		if(currentPage * state.search.itemsPerPage <= state.search.results.length) {
+      searchResNextBtn.classList.remove('disabled')
 
-			searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage);
+      if (currentPage * state.search.itemsPerPage === state.search.itemsPerPage) {
+        const searchResPrevBtn = document.querySelector(searchResPrev).parentNode
 
-			let searchResPrevBtn = document.querySelector(searchResPrev).parentNode;
-
-			searchResPrevBtn.classList.remove('disabled');
-
-			if (currentPage * state.search.itemsPerPage === state.search.results.length) {
-				let searchResNextBtn = document.querySelector(searchResNext).parentNode;
-
-				searchResNextBtn.classList.add('disabled');
-			}
-		}
-	}
-
-	if(target.closest(searchResPrev)) {
-
-		let currentPage = state.search.currentPage - 1;
-
-		state.search.currentPage = currentPage;
-
-		if(currentPage * state.search.itemsPerPage >= state.search.itemsPerPage) {
-
-			searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage);
-
-			let searchResNextBtn = document.querySelector(searchResNext).parentNode;
-
-			searchResNextBtn.classList.remove('disabled');
-
-			if (currentPage * state.search.itemsPerPage === state.search.itemsPerPage) {
-				let searchResPrevBtn = document.querySelector(searchResPrev).parentNode;
-
-				searchResPrevBtn.classList.add('disabled');
-			}
-		}
-	}
-
-});
+        searchResPrevBtn.classList.add('disabled')
+      }
+    }
+  }
+})
 
 document.addEventListener('keydown', e => {
+  const target = e.target
 
-	const target = e.target;
+  // pressing enter btn on the keybord while searching
+  if (target.closest(DOM.search.field)) {
+    if (e.key === 'Enter') {
+      // prevent reloading
+      e.preventDefault()
 
-	//pressing enter btn on the keybord while searching
-	if (target.closest(DOM.search.field)) {
-
-		if(e.key === 'Enter') {
-
-			//prevent reloading
-			e.preventDefault();
-
-			//implementing search
-			searchController();
-
-		}
-
-	}
-
-});
+      // implementing search
+      searchController()
+    }
+  }
+})
