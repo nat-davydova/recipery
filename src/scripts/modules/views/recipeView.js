@@ -1,58 +1,54 @@
-import { DOM } from '../configs/path';
-import { renderErrorMsg, showElem, cleanElemInner } from "../utils";
+import { DOM } from '../configs/path'
+import { renderErrorMsg, showElem, cleanElemInner } from '../utils'
 
 const renderIngredient = (img, title, text) => {
+  const card = DOM.fullRecipePanel.ingred.card.cloneNode(true)
 
-	const card = DOM.fullRecipePanel.ingred.card.cloneNode(true);
+  showElem(card)
 
-	showElem(card);
+  const cardImg = card.querySelector(DOM.fullRecipePanel.ingred.img)
 
-	const cardImg = card.querySelector(DOM.fullRecipePanel.ingred.img);
+  img && cardImg.setAttribute('src', `https://spoonacular.com/cdn/ingredients_250x250/${img}`)
+  cardImg.setAttribute('alt', title)
 
-	img && cardImg.setAttribute('src', `https://spoonacular.com/cdn/ingredients_250x250/${img}`);
-	cardImg.setAttribute('alt', title);
+  const cardContent = card.querySelector(DOM.fullRecipePanel.ingred.content)
 
-	const cardContent = card.querySelector(DOM.fullRecipePanel.ingred.content);
+  cardContent.textContent = text
 
-	cardContent.textContent = text;
+  DOM.fullRecipePanel.ingredList.appendChild(card)
+}
 
-	DOM.fullRecipePanel.ingredList.appendChild(card);
+export const renderFullRecipe = ({ id, imgSource, title, readyMins, servings, ingreds, url }, errorMsg) => {
+  if (errorMsg) {
+    renderErrorMsg(errorMsg, DOM.fullRecipePanel.content)
 
-};
+    return
+  }
 
-export const renderFullRecipe = ({id, imgSource, title, readyMins, servings, ingreds, url}, errorMsg) => {
+  // id addition
+  DOM.fullRecipePanel.content.dataset.id = id
 
-	if(errorMsg) {
-		renderErrorMsg(errorMsg, DOM.fullRecipePanel.content);
+  // image handling
+  imgSource && DOM.fullRecipePanel.recipeImg.setAttribute('src', imgSource)
 
-		return;
-	}
+  DOM.fullRecipePanel.recipeImg.setAttribute('alt', title)
 
-	//id addition
-	DOM.fullRecipePanel.content.dataset.id = id;
+  // title handling
+  DOM.fullRecipePanel.title.textContent = title
 
-	//image handling
+  // ready time handling
+  DOM.fullRecipePanel.readyTime.textContent = `${readyMins} mins`
 
-	imgSource && DOM.fullRecipePanel.recipeImg.setAttribute('src', imgSource);
+  // servings handling
+  DOM.fullRecipePanel.servings.textContent = servings
 
-	DOM.fullRecipePanel.recipeImg.setAttribute('alt', title);
+  // ingredients rendering
+  cleanElemInner(DOM.fullRecipePanel.ingredList)
 
-	//title handling
-	DOM.fullRecipePanel.title.textContent = title;
+  ingreds.forEach(({ image, name, original }) => renderIngredient(image, name, original))
 
-	//ready time handling
-	DOM.fullRecipePanel.readyTime.textContent = `${readyMins} mins`;
+  // learn more url
+  DOM.fullRecipePanel.url.setAttribute('href', url)
 
-	//servings handling
-	DOM.fullRecipePanel.servings.textContent = servings;
-
-	//ingredients rendering
-	cleanElemInner(DOM.fullRecipePanel.ingredList);
-
-	ingreds.forEach(({image, name, original}) => renderIngredient(image, name, original));
-
-	//learn more url
-	DOM.fullRecipePanel.url.setAttribute('href', url);
-
-	showElem(DOM.fullRecipePanel.recipe);
-};
+  showElem(DOM.fullRecipePanel.recipe)
+}
