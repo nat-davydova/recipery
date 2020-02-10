@@ -1,37 +1,32 @@
-import axios from 'axios';
-import { recipeApi } from "../configs/apiKeys";
+import axios from 'axios'
+import { recipeApi } from '../configs/apiKeys'
 
 export default class Recipe {
+  constructor (id) {
+    this.id = id
+  }
 
-	constructor(id) {
-		this.id = id;
-	}
+  async grabFullRecipe () {
+    try {
+      const apiURL = 'https://api.spoonacular.com/recipes/'
+      const apiKey = `apiKey=${recipeApi}`
+      const recipeQuery = `${this.id}/information`
 
-	grabFullRecipe = async () => {
+      const fullRecipe = await axios(`${apiURL}${recipeQuery}/?${apiKey}`)
 
-		try {
-			const apiURL = `https://api.spoonacular.com/recipes/`;
-			const apiKey = `apiKey=${recipeApi}`;
-			const recipeQuery = `${this.id}/information`;
+      this.fullRecipeData = fullRecipe.data
 
-			const fullRecipe = await axios(`${apiURL}${recipeQuery}/?${apiKey}`);
+      // grabbing info to use in the full recipe info
+      this.imgSource = this.fullRecipeData.image
+      this.ingreds = this.fullRecipeData.extendedIngredients
+      this.readyMins = this.fullRecipeData.readyInMinutes
+      this.title = this.fullRecipeData.title
+      this.servings = this.fullRecipeData.servings
+      this.url = this.fullRecipeData.sourceUrl
+    } catch (e) {
+      console.log(e)
 
-			this.fullRecipeData = fullRecipe.data;
-
-			//grabbing info to use in the full recipe info
-			this.imgSource = this.fullRecipeData.image;
-			this.ingreds = this.fullRecipeData.extendedIngredients;
-			this.readyMins = this.fullRecipeData.readyInMinutes;
-			this.title = this.fullRecipeData.title;
-			this.servings = this.fullRecipeData.servings;
-			this.url = this.fullRecipeData.sourceUrl;
-
-		} catch (e) {
-			console.log(e);
-
-			this.errorMessage = 'Sorry, something is wrong with the recipe content :( Try one more time!'
-		}
-
-	};
-
-}
+      this.errorMessage = 'Sorry, something is wrong with the recipe content :( Try one more time!'
+    }
+  };
+};
