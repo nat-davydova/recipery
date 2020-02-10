@@ -1,5 +1,9 @@
 import { DOM } from '../configs/path'
-import { renderErrorMsg, showElem, cleanElemInner } from '../utils'
+import {
+  renderErrorMsg,
+  showElem,
+  cleanElemInner
+} from '../utils'
 
 const renderIngredient = (img, title, text) => {
   const card = DOM.fullRecipePanel.ingred.card.cloneNode(true)

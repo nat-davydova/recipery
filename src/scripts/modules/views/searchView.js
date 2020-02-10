@@ -1,5 +1,10 @@
 import { DOM } from '../configs/path'
-import { renderErrorMsg, showElem, pagination, cleanElemInner } from '../utils'
+import {
+  renderErrorMsg,
+  showElem,
+  pagination,
+  cleanElemInner
+} from '../utils'
 
 // rendeer search results
 const recipeCard = (id, title, img) => {

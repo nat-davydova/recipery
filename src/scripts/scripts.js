@@ -10,7 +10,15 @@ import * as recipeView from './modules/views/recipeView'
 
 // import utils and configs
 import { DOM } from './modules/configs/path'
-import { getInputVal, hideElem, showElem, scrollbarsInit, cleanElemInner, cleanInput, findParent } from './modules/utils'
+import {
+  getInputVal,
+  hideElem,
+  showElem,
+  scrollbarsInit,
+  cleanElemInner,
+  cleanInput,
+  findParent
+} from './modules/utils'
 
 // state
 // here stored:
