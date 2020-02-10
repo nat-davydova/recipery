@@ -1,57 +1,42 @@
-import axios from 'axios';
-import { recipeApi } from "../configs/apiKeys";
+import axios from 'axios'
+import { recipeApi } from '../configs/apiKeys'
 
 const multiWordsQuery = (query) => {
+  const queryArr = query.split(' ')
 
-	const queryArr = query.split(' ');
+  let newQueryArr
 
-	let newQueryArr;
+  if (queryArr.length > 1) {
+    newQueryArr = queryArr.map((elem, index) => {
+      return index === 0 ? elem : `+${elem}`
+    })
 
-	if(queryArr.length > 1) {
+    query = newQueryArr.join(',')
+  }
 
-		newQueryArr = queryArr.map((elem, index) => {
-
-			return index === 0 ? elem : `+${elem}`;
-
-		});
-
-		query = newQueryArr.join(',');
-
-	}
-
-	return query;
-
-};
+  return query
+}
 
 export default class Search {
+  constructor (searchQuery) {
+    this.searchQuery = multiWordsQuery(searchQuery)
+  }
 
-	constructor(searchQuery) {
+  // grabbing search results from API (10 items per request by default)
+  async getSearchResults (num) {
+    try {
+      const apiURL = 'https://api.spoonacular.com/recipes/findByIngredients?'
+      const apiKey = `apiKey=${recipeApi}`
+      const search = `ingredients=${this.searchQuery}`
+      const recipesNum = `number=${num}`
 
-		this.searchQuery = multiWordsQuery(searchQuery);
+      const searchResults = await axios(`${apiURL}${apiKey}&${search}&${recipesNum}`)
 
-	};
+      this.results = searchResults.data
+    } catch (e) {
+      console.log(e)
 
-	//grabbing search results from API (10 items per request by default)
-	getSearchResults = async num => {
-
-		try {
-			const apiURL = `https://api.spoonacular.com/recipes/findByIngredients?`;
-			const apiKey = `apiKey=${recipeApi}`;
-			const search = `ingredients=${this.searchQuery}`;
-			const recipesNum = `number=${num}`;
-
-			const searchResults = await axios(`${apiURL}${apiKey}&${search}&${recipesNum}`);
-
-			this.results = searchResults.data;
-
-		} catch (e) {
-
-			console.log(e);
-
-			this.errorMessage = 'Sorry, something went wrong with API request :( Try one more time!'
-
-		}
-
-	};
-
+      this.errorMessage = 'Sorry, something went wrong with API request :( Try one more time!'
+    }
+  };
 };
