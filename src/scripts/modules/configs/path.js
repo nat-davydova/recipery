@@ -2,7 +2,8 @@ export const DOM = {
 
   search: {
     btn: '.search-home__btn',
-    field: '.search-home__input'
+    field: '.search-home__input',
+    form: '.search-home'
   },
 
   panels: {

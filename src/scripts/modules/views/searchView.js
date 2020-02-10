@@ -27,6 +27,10 @@ const recipeCard = (id, title, img) => {
   DOM.searchResPanel.results.appendChild(card)
 }
 
+export const renderSearchError = searchErrorMsg => {
+  renderErrorMsg(searchErrorMsg, document.querySelector(DOM.search.form))
+}
+
 export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPage) => {
   if (errorMsg) {
     renderErrorMsg(errorMsg, DOM.searchResPanel.results)
