@@ -1,4 +1,4 @@
-import { DOM } from '../configs/path'
+import { PATH } from '../configs/path'
 import {
   renderErrorMsg,
   showElem,
@@ -6,53 +6,53 @@ import {
 } from '../utils'
 
 const renderIngredient = (img, title, text) => {
-  const card = DOM.fullRecipePanel.ingred.card.cloneNode(true)
+  const card = PATH.fullRecipePanel.ingred.card.cloneNode(true)
 
   showElem(card)
 
-  const cardImg = card.querySelector(DOM.fullRecipePanel.ingred.img)
+  const cardImg = card.querySelector(PATH.fullRecipePanel.ingred.img)
 
   img && cardImg.setAttribute('src', `https://spoonacular.com/cdn/ingredients_250x250/${img}`)
   cardImg.setAttribute('alt', title)
 
-  const cardContent = card.querySelector(DOM.fullRecipePanel.ingred.content)
+  const cardContent = card.querySelector(PATH.fullRecipePanel.ingred.content)
 
   cardContent.textContent = text
 
-  DOM.fullRecipePanel.ingredList.appendChild(card)
+  PATH.fullRecipePanel.ingredList.appendChild(card)
 }
 
 export const renderFullRecipe = ({ id, imgSource, title, readyMins, servings, ingreds, url, errorMessage }) => {
   if (errorMessage) {
-    renderErrorMsg(errorMessage, DOM.fullRecipePanel.content)
+    renderErrorMsg(errorMessage, PATH.fullRecipePanel.content)
 
     return
   }
 
   // id addition
-  DOM.fullRecipePanel.content.dataset.id = id
+  PATH.fullRecipePanel.content.dataset.id = id
 
   // image handling
-  imgSource && DOM.fullRecipePanel.recipeImg.setAttribute('src', imgSource)
+  imgSource && PATH.fullRecipePanel.recipeImg.setAttribute('src', imgSource)
 
-  DOM.fullRecipePanel.recipeImg.setAttribute('alt', title)
+  PATH.fullRecipePanel.recipeImg.setAttribute('alt', title)
 
   // title handling
-  DOM.fullRecipePanel.title.textContent = title
+  PATH.fullRecipePanel.title.textContent = title
 
   // ready time handling
-  DOM.fullRecipePanel.readyTime.textContent = `${readyMins} mins`
+  PATH.fullRecipePanel.readyTime.textContent = `${readyMins} mins`
 
   // servings handling
-  DOM.fullRecipePanel.servings.textContent = servings
+  PATH.fullRecipePanel.servings.textContent = servings
 
   // ingredients rendering
-  cleanElemInner(DOM.fullRecipePanel.ingredList)
+  cleanElemInner(PATH.fullRecipePanel.ingredList)
 
   ingreds.forEach(({ image, name, original }) => renderIngredient(image, name, original))
 
   // learn more url
-  DOM.fullRecipePanel.url.setAttribute('href', url)
+  PATH.fullRecipePanel.url.setAttribute('href', url)
 
-  showElem(DOM.fullRecipePanel.recipe)
+  showElem(PATH.fullRecipePanel.recipe)
 }

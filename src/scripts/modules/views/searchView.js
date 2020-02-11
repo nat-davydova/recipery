@@ -1,4 +1,4 @@
-import { DOM } from '../configs/path'
+import { PATH } from '../configs/path'
 import {
   renderErrorMsg,
   showElem,
@@ -8,45 +8,45 @@ import {
 
 // rendeer search results
 const recipeCard = (id, title, img) => {
-  const card = DOM.recipeCard.card.cloneNode(true)
+  const card = PATH.recipeCard.card.cloneNode(true)
 
   card.classList.remove('js-hidden')
 
   card.dataset.id = id
 
-  const recipeTitle = card.querySelector(DOM.recipeCard.title)
+  const recipeTitle = card.querySelector(PATH.recipeCard.title)
 
   recipeTitle.textContent = title
 
-  const recipeImg = card.querySelector(DOM.recipeCard.img)
+  const recipeImg = card.querySelector(PATH.recipeCard.img)
 
   recipeImg.setAttribute('src', img)
 
   recipeImg.setAttribute('alt', title)
 
-  DOM.searchResPanel.results.appendChild(card)
+  PATH.searchResPanel.results.appendChild(card)
 }
 
 export const renderSearchError = searchErrorMsg => {
-  renderErrorMsg(searchErrorMsg, document.querySelector(DOM.search.form))
+  renderErrorMsg(searchErrorMsg, document.querySelector(PATH.search.form))
 }
 
 export const renderSearchResults = ({ results, errorMsg, itemsPerPage, currentPage }) => {
   if (errorMsg) {
-    renderErrorMsg(errorMsg, DOM.searchResPanel.results)
+    renderErrorMsg(errorMsg, PATH.searchResPanel.results)
 
     return
   }
 
   // clear UI
-  cleanElemInner(DOM.searchResPanel.results)
+  cleanElemInner(PATH.searchResPanel.results)
 
   // render results
   if (results.length > itemsPerPage) {
     // pagination init, if there are more elems than displayed on 1 page
-    showElem(document.querySelector(DOM.searchResPanel.pagination))
+    showElem(document.querySelector(PATH.searchResPanel.pagination))
 
-    const pagedArr = pagination(DOM.searchResPanel.pagination, results, itemsPerPage, currentPage)
+    const pagedArr = pagination(PATH.searchResPanel.pagination, results, itemsPerPage, currentPage)
 
     if (pagedArr) {
       pagedArr.forEach(({ id, title, image }) => {
@@ -58,6 +58,6 @@ export const renderSearchResults = ({ results, errorMsg, itemsPerPage, currentPa
       recipeCard(id, title, image)
     })
   } else {
-    renderErrorMsg('Sorry, we can\'t find any recipes :( Try other keywords!', DOM.searchResPanel.results)
+    renderErrorMsg('Sorry, we can\'t find any recipes :( Try other keywords!', PATH.searchResPanel.results)
   }
 }

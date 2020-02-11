@@ -1,4 +1,4 @@
-export const DOM = {
+export const PATH = {
 
   search: {
     btn: '.search-home__btn',

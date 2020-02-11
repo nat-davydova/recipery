@@ -1,6 +1,6 @@
 import PerfectScrollbar from 'perfect-scrollbar'
 
-import { DOM } from './configs/path'
+import { PATH } from './configs/path'
 
 // get input value
 export const getInputVal = input => input.value
@@ -22,7 +22,7 @@ export const delElem = elem => elem.remove()
 
 // perfect scrollbars init
 export const scrollbarsInit = () => {
-  DOM.panels.panelsArr.forEach((elem) => {
+  PATH.panels.panelsArr.forEach((elem) => {
     const ps = new PerfectScrollbar(elem)
   })
 }
@@ -35,7 +35,7 @@ export const cleanInput = input => { input.value = '' }
 
 // render error messages
 export const renderErrorMsg = (errorText, renderPlace) => {
-  const error = DOM.errorContainer.cloneNode(true)
+  const error = PATH.errorContainer.cloneNode(true)
 
   error.classList.remove('js-hidden')
 

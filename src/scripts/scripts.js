@@ -9,7 +9,7 @@ import * as searchView from './modules/views/searchView'
 import * as recipeView from './modules/views/recipeView'
 
 // import utils and configs
-import { DOM } from './modules/configs/path'
+import { PATH } from './modules/configs/path'
 import {
   getInputVal,
   scrollbarsInit,
@@ -34,7 +34,7 @@ const state = {}
 const searchController = async (search = false) => {
   // search init state
   const initState = {
-    searchField: document.querySelector(DOM.search.field),
+    searchField: document.querySelector(PATH.search.field),
     currentPage: 1,
     itemsPerPage: 5,
     itemsPerRequest: 70 // number - items per request (min - 1, max - 100)
@@ -42,7 +42,7 @@ const searchController = async (search = false) => {
 
   // get search query from the search input
   const query = getInputVal(initState.searchField)
-  const searchError = document.querySelector(DOM.search.error)
+  const searchError = document.querySelector(PATH.search.error)
 
   // get search results
   if (query) {
@@ -51,17 +51,17 @@ const searchController = async (search = false) => {
 
     // remove error message if there is one
     if (searchError) {
-      delElem(document.querySelector(DOM.search.error))
+      delElem(document.querySelector(PATH.search.error))
     }
 
     // hide home panel and show preloader
-    toggleElems(DOM.panels.home, DOM.loaders.mainLoader)
+    toggleElems(PATH.panels.home, PATH.loaders.mainLoader)
 
     // grabbing search results from API
     await state.search.getSearchResults(initState.itemsPerRequest)
 
     // hide loader and show results panel
-    toggleElems(DOM.loaders.mainLoader, DOM.panels.searchRes)
+    toggleElems(PATH.loaders.mainLoader, PATH.panels.searchRes)
 
     // render search results (number - items per page number, for pagination)
     state.search.currentPage = initState.currentPage
@@ -85,13 +85,13 @@ const recipeController = async (recipeId) => {
     state.fullRecipe = new Recipe(recipeId)
 
     // hide search results panel and show preloader
-    toggleElems(DOM.panels.searchRes, DOM.loaders.mainLoader)
+    toggleElems(PATH.panels.searchRes, PATH.loaders.mainLoader)
 
     // grabbing recipe data rom API
     await state.fullRecipe.grabFullRecipe()
 
     // hide loader and show single result panel
-    toggleElems(DOM.loaders.mainLoader, DOM.panels.fullRecipe)
+    toggleElems(PATH.loaders.mainLoader, PATH.panels.fullRecipe)
 
     // render full recipe info
     recipeView.renderFullRecipe(state.fullRecipe)
@@ -112,32 +112,32 @@ document.addEventListener('click', e => {
   const target = e.target
 
   // clicking on search buttons
-  if (target.closest(DOM.search.btn)) {
+  if (target.closest(PATH.search.btn)) {
     // implementing search
     searchController(true)
   }
 
   // clicking on return btn from search panel
-  if (target.closest(DOM.returnBtns.searchReturn)) {
+  if (target.closest(PATH.returnBtns.searchReturn)) {
     // close search panel and show home panel
-    toggleElems(DOM.panels.searchRes, DOM.panels.home)
+    toggleElems(PATH.panels.searchRes, PATH.panels.home)
 
     // clean search results
-    cleanElemInner(DOM.searchResPanel.results)
+    cleanElemInner(PATH.searchResPanel.results)
 
     // clean search input
-    cleanInput(document.querySelector(DOM.search.field))
+    cleanInput(document.querySelector(PATH.search.field))
   }
 
   // clicking on return btn from full recipe panel
-  if (target.closest(DOM.returnBtns.recipeReturn)) {
+  if (target.closest(PATH.returnBtns.recipeReturn)) {
     // close recipe panel and show search results
-    toggleElems(DOM.panels.fullRecipe, DOM.panels.searchRes)
+    toggleElems(PATH.panels.fullRecipe, PATH.panels.searchRes)
   }
 
   // clicking on a recipe card
-  if (target.closest(DOM.recipeCard.moreBtn)) {
-    const btn = target.closest(DOM.recipeCard.moreBtn)
+  if (target.closest(PATH.recipeCard.moreBtn)) {
+    const btn = target.closest(PATH.recipeCard.moreBtn)
     const recipeCard = findParent(btn, 'recipe-card')
 
     recipeController(recipeCard.dataset.id)
@@ -145,8 +145,8 @@ document.addEventListener('click', e => {
 
   // clicking on next button of search pager
 
-  const searchResNext = `${DOM.searchResPanel.pagination} a[tabindex = "1"]`
-  const searchResPrev = `${DOM.searchResPanel.pagination} a[tabindex = "-1"]`
+  const searchResNext = `${PATH.searchResPanel.pagination} a[tabindex = "1"]`
+  const searchResPrev = `${PATH.searchResPanel.pagination} a[tabindex = "-1"]`
 
   if (target.closest(searchResNext)) {
     const currentPage = state.search.currentPage + 1
@@ -193,7 +193,7 @@ document.addEventListener('keydown', e => {
   const target = e.target
 
   // pressing enter btn on the keybord while searching
-  if (target.closest(DOM.search.field)) {
+  if (target.closest(PATH.search.field)) {
     if (e.key === 'Enter') {
       // prevent reloading
       e.preventDefault()
