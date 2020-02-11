@@ -11,6 +11,9 @@ export const hideElem = elem => elem.classList.add('js-hidden')
 // show elem
 export const showElem = elem => elem.classList.remove('js-hidden')
 
+// delete elem
+export const delElem = elem => elem.remove()
+
 // perfect scrollbars init
 export const scrollbarsInit = () => {
   DOM.panels.panelsArr.forEach((elem) => {

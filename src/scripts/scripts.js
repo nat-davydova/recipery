@@ -17,7 +17,8 @@ import {
   scrollbarsInit,
   cleanElemInner,
   cleanInput,
-  findParent
+  findParent,
+  delElem
 } from './modules/utils'
 
 // state
@@ -35,6 +36,11 @@ const searchController = async (search = false, searchField = document.querySele
   if (query) {
     // create new search object based on the search query
     state.search = new Search(query)
+
+    // remove error message if there is one
+    if (document.querySelector(DOM.search.error)) {
+      delElem(document.querySelector(DOM.search.error))
+    }
 
     // hide home panel
     hideElem(DOM.panels.home)
@@ -56,7 +62,7 @@ const searchController = async (search = false, searchField = document.querySele
     state.search.itemsPerPage = itemsPerPage
 
     searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage)
-  } else if (search) {
+  } else if (search && !document.querySelector(DOM.search.error)) {
     const searchErrorMsg = 'Please, add some keywords to start searching'
 
     searchView.renderSearchError(searchErrorMsg)
