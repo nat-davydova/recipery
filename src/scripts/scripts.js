@@ -86,20 +86,14 @@ const recipeController = async (recipeId) => {
     // create new recipe object based on the recipe id
     state.fullRecipe = new Recipe(recipeId)
 
-    // hide home panel
-    hideElem(DOM.panels.searchRes)
-
-    // show preloader
-    showElem(DOM.loaders.mainLoader)
+    // hide search results panel and show preloader
+    toggleElems(DOM.panels.searchRes, DOM.loaders.mainLoader)
 
     // grabbing recipe data rom API
     await state.fullRecipe.grabFullRecipe()
 
-    // hide loader
-    hideElem(DOM.loaders.mainLoader)
-
-    // show single result panel
-    showElem(DOM.panels.fullRecipe)
+    // hide loader and show single result panel
+    toggleElems(DOM.loaders.mainLoader, DOM.panels.fullRecipe)
 
     // render full recipe info
     recipeView.renderFullRecipe(state.fullRecipe, state.fullRecipe.errorMessage)
