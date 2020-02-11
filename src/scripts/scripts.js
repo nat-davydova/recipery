@@ -24,13 +24,25 @@ import {
 // state
 // here stored:
 // search query
+// search results
 // full recipes
 const state = {}
 
 // *** SEARCH CONTROLLER
-const searchController = async (search = false, searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
+
+// simple controller initing - search = false
+// search proceeded - search = true
+const searchController = async (search = false) => {
+  // search init state
+  const initState = {
+    searchField: document.querySelector(DOM.search.field),
+    currentPage: 1,
+    itemsPerPage: 5,
+    itemsPerRequest: 70 // number - items per request (min - 1, max - 100)
+  }
+
   // get search query from the search input
-  const query = getInputVal(searchField)
+  const query = getInputVal(initState.searchField)
   const searchError = document.querySelector(DOM.search.error)
 
   // get search results
@@ -50,7 +62,7 @@ const searchController = async (search = false, searchField = document.querySele
     showElem(DOM.loaders.mainLoader)
 
     // grabbing search results from API
-    await state.search.getSearchResults(70) // number - items per request (min - 1, max - 100)
+    await state.search.getSearchResults(initState.itemsPerRequest)
 
     // hide loader
     hideElem(DOM.loaders.mainLoader)
@@ -59,8 +71,8 @@ const searchController = async (search = false, searchField = document.querySele
     showElem(DOM.panels.searchRes)
 
     // render search results (number - items per page number, for pagination)
-    state.search.currentPage = currentPage
-    state.search.itemsPerPage = itemsPerPage
+    state.search.currentPage = initState.currentPage
+    state.search.itemsPerPage = initState.itemsPerPage
 
     searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage)
   } else if (search && !searchError) {
