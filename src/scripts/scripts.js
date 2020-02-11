@@ -74,7 +74,7 @@ const searchController = async (search = false) => {
     state.search.currentPage = initState.currentPage
     state.search.itemsPerPage = initState.itemsPerPage
 
-    searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage)
+    searchView.renderSearchResults(state.search)
   } else if (search && !searchError) {
     const searchErrorMsg = 'Please, add some keywords to start searching'
 

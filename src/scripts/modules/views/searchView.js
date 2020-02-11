@@ -31,7 +31,7 @@ export const renderSearchError = searchErrorMsg => {
   renderErrorMsg(searchErrorMsg, document.querySelector(DOM.search.form))
 }
 
-export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPage) => {
+export const renderSearchResults = ({ results, errorMsg, itemsPerPage, currentPage }) => {
   if (errorMsg) {
     renderErrorMsg(errorMsg, DOM.searchResPanel.results)
 
@@ -42,19 +42,19 @@ export const renderSearchResults = (searchArr, errorMsg, itemsPerPage, currentPa
   cleanElemInner(DOM.searchResPanel.results)
 
   // render results
-  if (searchArr.length > itemsPerPage) {
+  if (results.length > itemsPerPage) {
     // pagination init, if there are more elems than displayed on 1 page
     showElem(document.querySelector(DOM.searchResPanel.pagination))
 
-    const pagedArr = pagination(DOM.searchResPanel.pagination, searchArr, itemsPerPage, currentPage)
+    const pagedArr = pagination(DOM.searchResPanel.pagination, results, itemsPerPage, currentPage)
 
     if (pagedArr) {
       pagedArr.forEach(({ id, title, image }) => {
         recipeCard(id, title, image)
       })
     }
-  } else if (searchArr.length <= itemsPerPage && searchArr.length > 0) {
-    searchArr.forEach(({ id, title, image }) => {
+  } else if (results.length <= itemsPerPage && results.length > 0) {
+    results.forEach(({ id, title, image }) => {
       recipeCard(id, title, image)
     })
   } else {
