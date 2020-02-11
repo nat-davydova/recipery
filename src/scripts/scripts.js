@@ -94,7 +94,7 @@ const recipeController = async (recipeId) => {
     toggleElems(DOM.loaders.mainLoader, DOM.panels.fullRecipe)
 
     // render full recipe info
-    recipeView.renderFullRecipe(state.fullRecipe, state.fullRecipe.errorMessage)
+    recipeView.renderFullRecipe(state.fullRecipe)
   }
 
   console.log(state)

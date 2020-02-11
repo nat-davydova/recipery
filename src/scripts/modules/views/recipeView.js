@@ -22,9 +22,9 @@ const renderIngredient = (img, title, text) => {
   DOM.fullRecipePanel.ingredList.appendChild(card)
 }
 
-export const renderFullRecipe = ({ id, imgSource, title, readyMins, servings, ingreds, url }, errorMsg) => {
-  if (errorMsg) {
-    renderErrorMsg(errorMsg, DOM.fullRecipePanel.content)
+export const renderFullRecipe = ({ id, imgSource, title, readyMins, servings, ingreds, url, errorMessage }) => {
+  if (errorMessage) {
+    renderErrorMsg(errorMessage, DOM.fullRecipePanel.content)
 
     return
   }
