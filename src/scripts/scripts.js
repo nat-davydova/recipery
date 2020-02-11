@@ -30,7 +30,7 @@ const state = {}
 
 // *** SEARCH CONTROLLER
 
-// simple controller initing - search = false
+// onload controller initing - search = false
 // search proceeded - search = true
 const searchController = async (search = false) => {
   // search init state
@@ -47,7 +47,7 @@ const searchController = async (search = false) => {
 
   // get search results
   if (query) {
-    // create new search object based on the search query
+    // create new search object instance based on the search query
     state.search = new Search(query)
 
     // remove error message if there is one
@@ -76,6 +76,7 @@ const searchController = async (search = false) => {
 
     searchView.renderSearchResults(state.search)
   } else if (search && !searchError) {
+    // if there is no query - rendering error message
     const searchErrorMsg = 'Please, add some keywords to start searching'
 
     searchView.renderSearchError(searchErrorMsg)
