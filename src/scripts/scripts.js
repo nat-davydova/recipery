@@ -81,7 +81,7 @@ const searchController = async (search = false) => {
 // *** RECIPE CONTROLLER
 const recipeController = async (recipeId) => {
   if (recipeId) {
-    // create new recipe object based on the recipe id
+    // create new recipe object
     state.fullRecipe = new Recipe(recipeId)
 
     // hide search results panel and show preloader
