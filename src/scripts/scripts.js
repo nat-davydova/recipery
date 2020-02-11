@@ -31,6 +31,7 @@ const state = {}
 const searchController = async (search = false, searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
   // get search query from the search input
   const query = getInputVal(searchField)
+  const searchError = document.querySelector(DOM.search.error)
 
   // get search results
   if (query) {
@@ -38,7 +39,7 @@ const searchController = async (search = false, searchField = document.querySele
     state.search = new Search(query)
 
     // remove error message if there is one
-    if (document.querySelector(DOM.search.error)) {
+    if (searchError) {
       delElem(document.querySelector(DOM.search.error))
     }
 
@@ -62,7 +63,7 @@ const searchController = async (search = false, searchField = document.querySele
     state.search.itemsPerPage = itemsPerPage
 
     searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage)
-  } else if (search && !document.querySelector(DOM.search.error)) {
+  } else if (search && !searchError) {
     const searchErrorMsg = 'Please, add some keywords to start searching'
 
     searchView.renderSearchError(searchErrorMsg)
