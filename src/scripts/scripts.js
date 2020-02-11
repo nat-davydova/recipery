@@ -57,7 +57,7 @@ const searchController = async (searchField = document.querySelector(DOM.search.
 
     searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage)
   } else {
-    const searchErrorMsg = 'Please, add some keywords to search'
+    const searchErrorMsg = 'Please, add some keywords to start searching'
 
     searchView.renderSearchError(searchErrorMsg)
   }
