@@ -27,7 +27,7 @@ import {
 const state = {}
 
 // *** SEARCH CONTROLLER
-const searchController = async (searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
+const searchController = async (search = false, searchField = document.querySelector(DOM.search.field), currentPage = 1, itemsPerPage = 5) => {
   // get search query from the search input
   const query = getInputVal(searchField)
 
@@ -56,7 +56,7 @@ const searchController = async (searchField = document.querySelector(DOM.search.
     state.search.itemsPerPage = itemsPerPage
 
     searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, state.search.currentPage)
-  } else {
+  } else if (search) {
     const searchErrorMsg = 'Please, add some keywords to start searching'
 
     searchView.renderSearchError(searchErrorMsg)
@@ -107,7 +107,7 @@ document.addEventListener('click', e => {
   // clicking on search buttons
   if (target.closest(DOM.search.btn)) {
     // implementing search
-    searchController()
+    searchController(true)
   }
 
   // clicking on return btn from search panel
@@ -198,7 +198,7 @@ document.addEventListener('keydown', e => {
       e.preventDefault()
 
       // implementing search
-      searchController()
+      searchController(true)
     }
   }
 })
