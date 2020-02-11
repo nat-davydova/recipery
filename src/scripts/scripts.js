@@ -12,8 +12,6 @@ import * as recipeView from './modules/views/recipeView'
 import { DOM } from './modules/configs/path'
 import {
   getInputVal,
-  hideElem,
-  showElem,
   scrollbarsInit,
   cleanElemInner,
   cleanInput,
@@ -121,11 +119,8 @@ document.addEventListener('click', e => {
 
   // clicking on return btn from search panel
   if (target.closest(DOM.returnBtns.searchReturn)) {
-    // close search panel
-    hideElem(DOM.panels.searchRes)
-
-    // show home panel
-    showElem(DOM.panels.home)
+    // close search panel and show home panel
+    toggleElems(DOM.panels.searchRes, DOM.panels.home)
 
     // clean search results
     cleanElemInner(DOM.searchResPanel.results)
@@ -136,11 +131,8 @@ document.addEventListener('click', e => {
 
   // clicking on return btn from full recipe panel
   if (target.closest(DOM.returnBtns.recipeReturn)) {
-    // close search panel
-    hideElem(DOM.panels.fullRecipe)
-
-    // show home panel
-    showElem(DOM.panels.searchRes)
+    // close recipe panel and show search results
+    toggleElems(DOM.panels.fullRecipe, DOM.panels.searchRes)
   }
 
   // clicking on a recipe card
