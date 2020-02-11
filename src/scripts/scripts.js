@@ -18,7 +18,8 @@ import {
   cleanElemInner,
   cleanInput,
   findParent,
-  delElem
+  delElem,
+  toggleElems
 } from './modules/utils'
 
 // state
@@ -55,20 +56,14 @@ const searchController = async (search = false) => {
       delElem(document.querySelector(DOM.search.error))
     }
 
-    // hide home panel
-    hideElem(DOM.panels.home)
-
-    // show preloader
-    showElem(DOM.loaders.mainLoader)
+    // hide home panel and show preloader
+    toggleElems(DOM.panels.home, DOM.loaders.mainLoader)
 
     // grabbing search results from API
     await state.search.getSearchResults(initState.itemsPerRequest)
 
-    // hide loader
-    hideElem(DOM.loaders.mainLoader)
-
-    // show results panel
-    showElem(DOM.panels.searchRes)
+    // hide loader and show results panel
+    toggleElems(DOM.loaders.mainLoader, DOM.panels.searchRes)
 
     // render search results (number - items per page number, for pagination)
     state.search.currentPage = initState.currentPage

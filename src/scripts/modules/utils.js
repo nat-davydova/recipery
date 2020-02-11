@@ -11,6 +11,12 @@ export const hideElem = elem => elem.classList.add('js-hidden')
 // show elem
 export const showElem = elem => elem.classList.remove('js-hidden')
 
+// toggling elements - one - is hidden, second - is shown
+export const toggleElems = (elemToHide, elemToShow) => {
+  hideElem(elemToHide)
+  showElem(elemToShow)
+}
+
 // delete elem
 export const delElem = elem => elem.remove()
 
