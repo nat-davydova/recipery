@@ -1,1 +1,1 @@
-export const recipeApi = 'e7774f8514b14360a25206c47a4bfcb8'
+export const recipeApi = 'a2268cb1073c4050861e03d8d557eeee'

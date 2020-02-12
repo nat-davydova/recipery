@@ -27,7 +27,11 @@ export const PATH = {
 
   searchResPanel: {
     results: document.querySelector('.search-results__results'),
-    pagination: '.search-results__pagination'
+    pagination: {
+      pagination: '.search-results__pagination',
+      prev: '.search-results__pagination .pagination-prev',
+      next: '.search-results__pagination .pagination-next'
+    }
   },
 
   fullRecipePanel: {

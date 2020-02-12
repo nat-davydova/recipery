@@ -145,10 +145,7 @@ document.addEventListener('click', e => {
 
   // clicking on next button of search pager
 
-  const searchResNext = `${PATH.searchResPanel.pagination} a[tabindex = "1"]`
-  const searchResPrev = `${PATH.searchResPanel.pagination} a[tabindex = "-1"]`
-
-  if (target.closest(searchResNext)) {
+  if (target.closest(PATH.searchResPanel.pagination.prev)) {
     const currentPage = state.search.currentPage + 1
 
     state.search.currentPage = currentPage
@@ -156,19 +153,20 @@ document.addEventListener('click', e => {
     if (currentPage * state.search.itemsPerPage <= state.search.results.length) {
       searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage)
 
-      const searchResPrevBtn = document.querySelector(searchResPrev).parentNode
+      const searchResPrevBtn = document.querySelector(PATH.searchResPanel.pagination.prev).parentNode
 
       searchResPrevBtn.classList.remove('disabled')
 
       if (currentPage * state.search.itemsPerPage === state.search.results.length) {
-        const searchResNextBtn = document.querySelector(searchResNext).parentNode
+        const searchResNextBtn = document.querySelector(PATH.searchResPanel.pagination.next).parentNode
 
         searchResNextBtn.classList.add('disabled')
       }
     }
   }
 
-  if (target.closest(searchResPrev)) {
+  // clicking on prev button of search pager
+  if (target.closest(PATH.searchResPanel.pagination.next)) {
     const currentPage = state.search.currentPage - 1
 
     state.search.currentPage = currentPage
@@ -176,12 +174,12 @@ document.addEventListener('click', e => {
     if (currentPage * state.search.itemsPerPage >= state.search.itemsPerPage) {
       searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage)
 
-      const searchResNextBtn = document.querySelector(searchResNext).parentNode
+      const searchResNextBtn = document.querySelector(PATH.searchResPanel.pagination.next).parentNode
 
       searchResNextBtn.classList.remove('disabled')
 
       if (currentPage * state.search.itemsPerPage === state.search.itemsPerPage) {
-        const searchResPrevBtn = document.querySelector(searchResPrev).parentNode
+        const searchResPrevBtn = document.querySelector(PATH.searchResPanel.pagination.prev).parentNode
 
         searchResPrevBtn.classList.add('disabled')
       }
