@@ -8,7 +8,7 @@ The app allows to **search recipes** using keywords via **Spoonacular API**
 
 <img src="http://natali-davydova.me/assets/img/portfolio/recipery/sample.png" width="320" />
 
-### ⚙️ Use `gulp` command to start app locally
+### ⚙️ Use `gulp` command to run app locally
 
 - HTML (Pug, Bootstrap v4)
 - CSS/CSS3 (SCSS)
