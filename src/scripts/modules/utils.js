@@ -53,18 +53,3 @@ export const findParent = (currentElem, parentClass) => {
   }
   return currentElem
 }
-
-// splitting array to pages function
-export const pageSplit = (arr, itemsPerPage, currentPage) => {
-  const startInd = itemsPerPage * currentPage - itemsPerPage
-
-  const finalInd = itemsPerPage * currentPage
-
-  return arr.length >= itemsPerPage * currentPage ? arr.slice(startInd, finalInd) : null
-}
-
-// pagination script
-export const pagination = (pagination, arr, itemsPerPage, currentPage) => {
-  // page splitting
-  return pageSplit(arr, itemsPerPage, currentPage)
-}

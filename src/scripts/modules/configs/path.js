@@ -26,12 +26,7 @@ export const PATH = {
   },
 
   searchResPanel: {
-    results: document.querySelector('.search-results__results'),
-    pagination: {
-      pagination: '.search-results__pagination',
-      prev: '.search-results__pagination .pagination-prev',
-      next: '.search-results__pagination .pagination-next'
-    }
+    results: document.querySelector('.search-results__results')
   },
 
   fullRecipePanel: {

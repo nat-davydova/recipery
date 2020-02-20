@@ -1,8 +1,6 @@
 import { PATH } from '../configs/path'
 import {
   renderErrorMsg,
-  showElem,
-  pagination,
   cleanElemInner
 } from '../utils'
 
@@ -31,7 +29,7 @@ export const renderSearchError = searchErrorMsg => {
   renderErrorMsg(searchErrorMsg, document.querySelector(PATH.search.form))
 }
 
-export const renderSearchResults = ({ results, errorMsg, itemsPerPage, currentPage }) => {
+export const renderSearchResults = ({ results, errorMsg}) => {
   if (errorMsg) {
     renderErrorMsg(errorMsg, PATH.searchResPanel.results)
 
@@ -42,18 +40,7 @@ export const renderSearchResults = ({ results, errorMsg, itemsPerPage, currentPa
   cleanElemInner(PATH.searchResPanel.results)
 
   // render results
-  if (results.length > itemsPerPage) {
-    // pagination init, if there are more elems than displayed on 1 page
-    showElem(document.querySelector(PATH.searchResPanel.pagination.pagination))
-
-    const pagedArr = pagination(PATH.searchResPanel.pagination, results, itemsPerPage, currentPage)
-
-    if (pagedArr) {
-      pagedArr.forEach(({ id, title, image }) => {
-        recipeCard(id, title, image)
-      })
-    }
-  } else if (results.length <= itemsPerPage && results.length > 0) {
+  if (results.length > 0) {
     results.forEach(({ id, title, image }) => {
       recipeCard(id, title, image)
     })
