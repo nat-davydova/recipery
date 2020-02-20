@@ -44,7 +44,7 @@ export const renderSearchResults = ({ results, errorMsg, itemsPerPage, currentPa
   // render results
   if (results.length > itemsPerPage) {
     // pagination init, if there are more elems than displayed on 1 page
-    showElem(document.querySelector(PATH.searchResPanel.pagination))
+    showElem(document.querySelector(PATH.searchResPanel.pagination.pagination))
 
     const pagedArr = pagination(PATH.searchResPanel.pagination, results, itemsPerPage, currentPage)
 

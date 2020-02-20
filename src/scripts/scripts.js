@@ -151,7 +151,7 @@ document.addEventListener('click', e => {
     state.search.currentPage = currentPage
 
     if (currentPage * state.search.itemsPerPage <= state.search.results.length) {
-      searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage)
+      searchView.renderSearchResults(state.search)
 
       const searchResPrevBtn = document.querySelector(PATH.searchResPanel.pagination.prev).parentNode
 
@@ -172,7 +172,7 @@ document.addEventListener('click', e => {
     state.search.currentPage = currentPage
 
     if (currentPage * state.search.itemsPerPage >= state.search.itemsPerPage) {
-      searchView.renderSearchResults(state.search.results, state.search.errorMessage, state.search.itemsPerPage, currentPage)
+      searchView.renderSearchResults(state.search)
 
       const searchResNextBtn = document.querySelector(PATH.searchResPanel.pagination.next).parentNode
 
