@@ -30,9 +30,9 @@ export default class Search {
       const search = `ingredients=${this.searchQuery}`
       const recipesNum = `number=${num}`
 
-      const searchResults = await axios(`${apiURL}${apiKey}&${search}&${recipesNum}`)
+      const { data } = await axios(`${apiURL}${apiKey}&${search}&${recipesNum}`)
 
-      this.results = searchResults.data
+      this.results = data
     } catch (e) {
       console.log(e)
 
