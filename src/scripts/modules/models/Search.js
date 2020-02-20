@@ -1,25 +1,27 @@
 import axios from 'axios'
 import { recipeApi } from '../configs/apiKeys'
 
-const multiWordsQuery = (query) => {
-  const queryArr = query.split(' ')
-
-  let newQueryArr
-
-  if (queryArr.length > 1) {
-    newQueryArr = queryArr.map((elem, index) => {
-      return index === 0 ? elem : `+${elem}`
-    })
-
-    query = newQueryArr.join(',')
-  }
-
-  return query
-}
-
 export default class Search {
   constructor (searchQuery) {
-    this.searchQuery = multiWordsQuery(searchQuery)
+    this.searchQuery = this.multiWordsQuery(searchQuery)
+  }
+
+  // if there are more than 1 keywords in search,
+  // function converts them to a valid search request string for API
+  multiWordsQuery (query) {
+    const queryArr = query.split(' ')
+
+    let newQueryArr
+
+    if (queryArr.length > 1) {
+      newQueryArr = queryArr.map((elem, index) => {
+        return index === 0 ? elem : `+${elem}`
+      })
+
+      query = newQueryArr.join(',')
+    }
+
+    return query
   }
 
   // grabbing search results from API (10 items per request by default)
