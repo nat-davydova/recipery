@@ -5,12 +5,12 @@ import {
   cleanElemInner
 } from '../utils'
 
-const card = PATH.recipeCard.card.cloneNode(true)
-const recipeTitle = card.querySelector(PATH.recipeCard.title)
-const recipeImg = card.querySelector(PATH.recipeCard.img)
-
 // rendering single search item
 const recipeCard = (id, title, img) => {
+  const card = PATH.recipeCard.card.cloneNode(true)
+  const recipeTitle = card.querySelector(PATH.recipeCard.title)
+  const recipeImg = card.querySelector(PATH.recipeCard.img)
+
   card.classList.remove('js-hidden')
   card.dataset.id = id
 

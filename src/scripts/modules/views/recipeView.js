@@ -6,11 +6,10 @@ import {
   cleanElemInner
 } from '../utils'
 
-const card = PATH.fullRecipePanel.ingred.card.cloneNode(true)
-const cardImg = card.querySelector(PATH.fullRecipePanel.ingred.img)
-const cardContent = card.querySelector(PATH.fullRecipePanel.ingred.content)
-
 const renderIngredient = (img, title, text) => {
+  const card = PATH.fullRecipePanel.ingred.card.cloneNode(true)
+  const cardImg = card.querySelector(PATH.fullRecipePanel.ingred.img)
+  const cardContent = card.querySelector(PATH.fullRecipePanel.ingred.content)
 
   showElem(card)
 
