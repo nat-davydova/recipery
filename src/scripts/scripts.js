@@ -68,8 +68,6 @@ const searchController = async (search = false) => {
 
     searchView.renderSearchError(searchErrorMsg)
   }
-
-  console.log(state)
 }
 
 // *** RECIPE CONTROLLER
@@ -90,8 +88,6 @@ const recipeController = async (recipeId) => {
     // render full recipe info
     recipeView.renderFullRecipe(state.fullRecipe)
   }
-
-  console.log(state)
 }
 
 // *** INIT APP
