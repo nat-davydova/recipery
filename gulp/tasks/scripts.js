@@ -12,10 +12,7 @@ const del = require('del');
 const jsDev = 'scripts.js'; //file in source folder to compile
 const tempBasename = 'scripts-temp'; //basename for temporary file
 const jsToBundle = `${tempBasename}.js`; //temporary file to bundle with vendors
-const jsVendorsArray = [
-	'node_modules/jquery/dist/jquery.min.js',
-	'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
-]; //array of vendor js files from 3rd-party plugins
+const jsVendorsArray = []; //array of vendor js files from 3rd-party plugins
 
 const scriptsDev = function () {
 
