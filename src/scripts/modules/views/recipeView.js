@@ -13,7 +13,7 @@ const renderIngredient = (img, title, text) => {
 
   showElem(card)
 
-  renderImg(cardImg, `https://spoonacular.com/cdn/ingredients_250x250/${img}`, title)
+  renderImg(cardImg, img && `https://spoonacular.com/cdn/ingredients_250x250/${img}`, title)
 
   cardContent.textContent = text
 
