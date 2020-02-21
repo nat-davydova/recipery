@@ -6,16 +6,15 @@ import {
   cleanElemInner
 } from '../utils'
 
+const card = PATH.fullRecipePanel.ingred.card.cloneNode(true)
+const cardImg = card.querySelector(PATH.fullRecipePanel.ingred.img)
+const cardContent = card.querySelector(PATH.fullRecipePanel.ingred.content)
+
 const renderIngredient = (img, title, text) => {
-  const card = PATH.fullRecipePanel.ingred.card.cloneNode(true)
 
   showElem(card)
 
-  const cardImg = card.querySelector(PATH.fullRecipePanel.ingred.img)
-
   renderImg(cardImg, `https://spoonacular.com/cdn/ingredients_250x250/${img}`, title)
-
-  const cardContent = card.querySelector(PATH.fullRecipePanel.ingred.content)
 
   cardContent.textContent = text
 
@@ -33,9 +32,7 @@ export const renderFullRecipe = ({ id, imgSource, title, readyMins, servings, in
   PATH.fullRecipePanel.content.dataset.id = id
 
   // image handling
-  imgSource && PATH.fullRecipePanel.recipeImg.setAttribute('src', imgSource)
-
-  PATH.fullRecipePanel.recipeImg.setAttribute('alt', title)
+  renderImg(PATH.fullRecipePanel.recipeImg, imgSource, title)
 
   // title handling
   PATH.fullRecipePanel.title.textContent = title
