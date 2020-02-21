@@ -1,6 +1,7 @@
 import { PATH } from '../configs/path'
 import {
   renderErrorMsg,
+  renderImg,
   cleanElemInner
 } from '../utils'
 
@@ -18,9 +19,7 @@ const recipeCard = (id, title, img) => {
 
   const recipeImg = card.querySelector(PATH.recipeCard.img)
 
-  recipeImg.setAttribute('src', img)
-
-  recipeImg.setAttribute('alt', title)
+  renderImg(recipeImg, img, title)
 
   PATH.searchResPanel.results.appendChild(card)
 }

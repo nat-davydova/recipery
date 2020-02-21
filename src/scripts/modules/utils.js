@@ -14,6 +14,12 @@ export const cleanElemInner = elem => { elem.innerHTML = '' }
 
 export const cleanInput = input => { input.value = '' }
 
+// rendering images in the recipes and ingredients
+export const renderImg = (elem, src, altTxt) => {
+  src && elem.setAttribute('src', src)
+  elem.setAttribute('alt', altTxt)
+}
+
 // toggling elements - first - is hidden, second - is shown
 export const toggleElems = (elemToHide, elemToShow) => {
   hideElem(elemToHide)

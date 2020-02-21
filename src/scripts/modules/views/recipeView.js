@@ -2,6 +2,7 @@ import { PATH } from '../configs/path'
 import {
   renderErrorMsg,
   showElem,
+  renderImg,
   cleanElemInner
 } from '../utils'
 
@@ -12,8 +13,7 @@ const renderIngredient = (img, title, text) => {
 
   const cardImg = card.querySelector(PATH.fullRecipePanel.ingred.img)
 
-  img && cardImg.setAttribute('src', `https://spoonacular.com/cdn/ingredients_250x250/${img}`)
-  cardImg.setAttribute('alt', title)
+  renderImg(cardImg, `https://spoonacular.com/cdn/ingredients_250x250/${img}`, title)
 
   const cardContent = card.querySelector(PATH.fullRecipePanel.ingred.content)
 
