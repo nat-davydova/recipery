@@ -5,7 +5,7 @@ import {
   cleanElemInner
 } from '../utils'
 
-// rendeer search results
+// rendering single search item
 const recipeCard = (id, title, img) => {
   const card = PATH.recipeCard.card.cloneNode(true)
 
@@ -35,7 +35,7 @@ export const renderSearchResults = ({ results, errorMsg}) => {
     return
   }
 
-  // clear UI
+  // clear UI from previous search results
   cleanElemInner(PATH.searchResPanel.results)
 
   // render results
