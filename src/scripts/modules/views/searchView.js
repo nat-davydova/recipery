@@ -29,7 +29,7 @@ export const renderSearchError = searchErrorMsg => {
   renderErrorMsg(searchErrorMsg, document.querySelector(PATH.search.form))
 }
 
-export const renderSearchResults = ({ results, errorMsg}) => {
+export const renderSearchResults = (pageToStartRender, itemsPerPage, { results, errorMsg}) => {
   if (errorMsg) {
     renderErrorMsg(errorMsg, PATH.searchResPanel.results)
 
@@ -46,7 +46,7 @@ export const renderSearchResults = ({ results, errorMsg}) => {
     })
 
     const arr = document.querySelectorAll(PATH.recipeCard.cardClass)
-    pagination(arr, '', 1, 5)
+    pagination(arr, '', pageToStartRender, itemsPerPage)
 
     showElem(paginationElem)
   } else {

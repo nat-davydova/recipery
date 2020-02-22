@@ -25,7 +25,12 @@ import {
 // search query
 // search results
 // full recipes
-const state = {}
+// current page of search results
+// items per page of search results
+const state = {
+  currentPage: 1,
+  itemsPerPage: 5
+}
 
 // *** SEARCH CONTROLLER
 
@@ -62,7 +67,7 @@ const searchController = async (search = false) => {
     // hide loader and show results panel
     toggleElems(PATH.loaders.mainLoader, PATH.panels.searchRes)
 
-    searchView.renderSearchResults(state.search)
+    searchView.renderSearchResults(state.currentPage, state.itemsPerPage, state.search)
   } else if (search && !searchError) {
     // if there is no query - rendering error message
     const searchErrorMsg = 'Please, add some keywords to start searching'
