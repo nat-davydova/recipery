@@ -46,7 +46,7 @@ export const renderSearchResults = ({ results, errorMsg}) => {
     })
 
     const arr = document.querySelectorAll(PATH.recipeCard.cardClass)
-    pagination(1, 5, arr, '')
+    pagination(arr, '', 1, 5)
 
     showElem(paginationElem)
   } else {

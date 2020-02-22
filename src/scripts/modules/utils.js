@@ -55,7 +55,7 @@ export const findParent = (currentElem, parentClass) => {
 }
 
 // pagination function
-export const pagination = (currPage, numPerPage, arrayItems, direction) => {
+export const pagination = (arrayItems, direction, currPage, numPerPage) => {
   arrayItems.forEach((elem, index) => {
     if (index > currPage * (numPerPage - 1)) {
       hideElem(elem)
