@@ -64,15 +64,20 @@ export const pagination = (arrayItems, mode, currPage, numPerPage) => {
     arrayItems.forEach((elem, index) => {
       if (index > currPage * (numPerPage - 1)) {
         hideElem(elem)
+      } else {
+        console.log(`Index: ${index}, minIndex: 0, maxIndex: ${currPage * (numPerPage - 1)}, page: ${currPage}`)
       }
     })
-  } else if (mode === 'next') {
+    console.log('_______________________')
+  } else if (mode === 'next' || mode === 'prev') {
     arrayItems.forEach((elem, index) => {
-      if (index < (currPage - 1) * (numPerPage - 1) || index > currPage * (numPerPage - 1)) {
+      if (index < (currPage - 1) * numPerPage || index >= currPage * numPerPage) {
         hideElem(elem)
       } else {
+        console.log(`Index: ${index}, minIndex: ${(currPage - 1) * numPerPage}, maxIndex: ${currPage * numPerPage}, page: ${currPage}`)
         showElem(elem)
       }
     })
+    console.log('_______________________')
   }
 }

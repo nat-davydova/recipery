@@ -148,7 +148,9 @@ document.addEventListener('click', e => {
 
   // click on the 'Prev' button
   if (target.closest(PATH.pagination.prev)) {
-    console.log('prev')
+    state.currentPage--
+    const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
+    pagination(searchItems, 'prev', state.currentPage, state.itemsPerPage)
   }
 })
 
