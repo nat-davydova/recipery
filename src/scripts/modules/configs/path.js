@@ -50,5 +50,9 @@ export const PATH = {
     recipeReturn: '.recipe-full .return-btn'
   },
 
-  errorContainer: document.querySelector('.errorContainer')
+  errorContainer: document.querySelector('.errorContainer'),
+
+  pagination: {
+    pagination: '.pagination'
+  }
 }
