@@ -39,7 +39,8 @@ const searchController = async (search = false) => {
   }
 
   // get search query from the search input
-  const query = getInputVal(initState.searchField)
+  // const query = getInputVal(initState.searchField)
+  const query = 'apple'
   const searchError = document.querySelector(PATH.search.error)
 
   // get search results
