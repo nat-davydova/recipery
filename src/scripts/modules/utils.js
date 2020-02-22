@@ -66,5 +66,13 @@ export const pagination = (arrayItems, mode, currPage, numPerPage) => {
         hideElem(elem)
       }
     })
+  } else if (mode === 'next') {
+    arrayItems.forEach((elem, index) => {
+      if (index < (currPage - 1) * (numPerPage - 1) || index > currPage * (numPerPage - 1)) {
+        hideElem(elem)
+      } else {
+        showElem(elem)
+      }
+    })
   }
 }

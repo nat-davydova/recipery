@@ -17,7 +17,7 @@ import {
   cleanInput,
   findParent,
   delElem,
-  toggleElems
+  toggleElems, pagination
 } from './modules/utils'
 
 // state
@@ -141,7 +141,9 @@ document.addEventListener('click', e => {
 
   // clicking on the 'Next' button
   if (target.closest(PATH.pagination.next)) {
-    console.log('next')
+    state.currentPage++
+    const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
+    pagination(searchItems, 'next', state.currentPage, state.itemsPerPage)
   }
 
   // click on the 'Prev' button
