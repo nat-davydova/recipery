@@ -54,6 +54,8 @@ export const PATH = {
   errorContainer: document.querySelector('.errorContainer'),
 
   pagination: {
-    pagination: '.pagination'
+    pagination: '.pagination',
+    next: '.next-page',
+    prev: '.prev-page'
   }
 }

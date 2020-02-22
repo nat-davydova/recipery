@@ -138,6 +138,16 @@ document.addEventListener('click', e => {
 
     recipeController(recipeCard.dataset.id)
   }
+
+  // clicking on the 'Next' button
+  if (target.closest(PATH.pagination.next)) {
+    console.log('next')
+  }
+
+  // click on the 'Prev' button
+  if (target.closest(PATH.pagination.prev)) {
+    console.log('prev')
+  }
 })
 
 document.addEventListener('keydown', e => {
