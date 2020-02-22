@@ -20,6 +20,7 @@ export const PATH = {
 
   recipeCard: {
     card: document.querySelector('.recipe-card'),
+    cardClass: '.recipe-card',
     img: '.recipe-card__img img',
     title: '.recipe-card__title',
     moreBtn: '.recipe-card__more'

@@ -3,10 +3,11 @@ import {
   renderErrorMsg,
   renderImg,
   cleanElemInner,
-  showElem
+  showElem,
+  pagination
 } from '../utils'
 
-const pagination = document.querySelector(PATH.pagination.pagination);
+const paginationElem = document.querySelector(PATH.pagination.pagination);
 
 // rendering single search item
 const recipeCard = (id, title, img) => {
@@ -40,12 +41,14 @@ export const renderSearchResults = ({ results, errorMsg}) => {
 
   // render results and pagination
   if (results.length > 0) {
-
     results.forEach(({ id, title, image }) => {
       recipeCard(id, title, image)
     })
 
-    showElem(pagination)
+    const arr = document.querySelectorAll(PATH.recipeCard.cardClass)
+    pagination(1, 5, arr, '')
+
+    showElem(paginationElem)
   } else {
     renderErrorMsg('Sorry, we can\'t find any recipes :( Try other keywords!', PATH.searchResPanel.results)
   }

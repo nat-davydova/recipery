@@ -53,3 +53,12 @@ export const findParent = (currentElem, parentClass) => {
   }
   return currentElem
 }
+
+// pagination function
+export const pagination = (currPage, numPerPage, arrayItems, direction) => {
+  arrayItems.forEach((elem, index) => {
+    if (index > currPage * (numPerPage - 1)) {
+      hideElem(elem)
+    }
+  })
+}
