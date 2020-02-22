@@ -55,10 +55,16 @@ export const findParent = (currentElem, parentClass) => {
 }
 
 // pagination function
-export const pagination = (arrayItems, direction, currPage, numPerPage) => {
-  arrayItems.forEach((elem, index) => {
-    if (index > currPage * (numPerPage - 1)) {
-      hideElem(elem)
-    }
-  })
+// mode can be:
+// - 'loading' - if we render search results first time
+// - 'prev' or 'next' - if we click on Previous/Next pagination btns
+export const pagination = (arrayItems, mode, currPage, numPerPage) => {
+  // mode for initial loading - show only the 1st page items
+  if (mode === 'loading') {
+    arrayItems.forEach((elem, index) => {
+      if (index > currPage * (numPerPage - 1)) {
+        hideElem(elem)
+      }
+    })
+  }
 }
