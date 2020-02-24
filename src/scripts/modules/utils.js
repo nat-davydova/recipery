@@ -53,3 +53,45 @@ export const findParent = (currentElem, parentClass) => {
   }
   return currentElem
 }
+
+// pagination function
+// mode can be:
+// - 'loading' - if we render search results first time
+// - 'prev' or 'next' - if we click on Previous/Next pagination btns
+export const pagination = (arrayItems, mode, currPage, numPerPage) => {
+  // mode for initial loading - show only the 1st page items
+  if (mode === 'loading') {
+    arrayItems.forEach((elem, index) => {
+      if (index > currPage * (numPerPage - 1)) {
+        hideElem(elem)
+        console.log(`index: ${index}`)
+      }
+    })
+    // mode for prev/next buttons
+  } else if (mode === 'next' || mode === 'prev') {
+    arrayItems.forEach((elem, index) => {
+      if (index < (currPage - 1) * numPerPage || index >= currPage * numPerPage) {
+        hideElem(elem)
+      } else {
+        showElem(elem)
+      }
+    })
+  }
+
+  // enabling/disabling buttons
+  if (currPage - 1 === 0) {
+    document.querySelector(PATH.pagination.prev)
+      .classList.add('disabled')
+  } else {
+    document.querySelector(PATH.pagination.prev)
+      .classList.remove('disabled')
+  }
+
+  if (currPage * numPerPage === arrayItems.length) {
+    document.querySelector(PATH.pagination.next)
+      .classList.add('disabled')
+  } else {
+    document.querySelector(PATH.pagination.next)
+      .classList.remove('disabled')
+  }
+}

@@ -20,6 +20,7 @@ export const PATH = {
 
   recipeCard: {
     card: document.querySelector('.recipe-card'),
+    cardClass: '.recipe-card',
     img: '.recipe-card__img img',
     title: '.recipe-card__title',
     moreBtn: '.recipe-card__more'
@@ -50,5 +51,11 @@ export const PATH = {
     recipeReturn: '.recipe-full .return-btn'
   },
 
-  errorContainer: document.querySelector('.errorContainer')
+  errorContainer: document.querySelector('.errorContainer'),
+
+  pagination: {
+    pagination: '.pagination',
+    next: '.next-page',
+    prev: '.prev-page'
+  }
 }

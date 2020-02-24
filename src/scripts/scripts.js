@@ -17,7 +17,7 @@ import {
   cleanInput,
   findParent,
   delElem,
-  toggleElems
+  toggleElems, pagination
 } from './modules/utils'
 
 // state
@@ -25,7 +25,12 @@ import {
 // search query
 // search results
 // full recipes
-const state = {}
+// current page of search results
+// items per page of search results
+const state = {
+  currentPage: 1,
+  itemsPerPage: 5
+}
 
 // *** SEARCH CONTROLLER
 
@@ -35,7 +40,7 @@ const searchController = async (search = false) => {
   // search init state
   const initState = {
     searchField: document.querySelector(PATH.search.field),
-    itemsPerRequest: 70 // number - items per request (min - 1, max - 100)
+    itemsPerRequest: 60 // number - items per request (min - 1, max - 100)
   }
 
   // get search query from the search input
@@ -44,6 +49,9 @@ const searchController = async (search = false) => {
 
   // get search results
   if (query) {
+    // set start page to 1 every time we search smth
+    state.currentPage = 1
+
     // create new search object instance based on the search query
     state.search = new Search(query)
 
@@ -61,7 +69,7 @@ const searchController = async (search = false) => {
     // hide loader and show results panel
     toggleElems(PATH.loaders.mainLoader, PATH.panels.searchRes)
 
-    searchView.renderSearchResults(state.search)
+    searchView.renderSearchResults(state.currentPage, state.itemsPerPage, state.search)
   } else if (search && !searchError) {
     // if there is no query - rendering error message
     const searchErrorMsg = 'Please, add some keywords to start searching'
@@ -131,6 +139,21 @@ document.addEventListener('click', e => {
     const recipeCard = findParent(btn, 'recipe-card')
 
     recipeController(recipeCard.dataset.id)
+  }
+
+  // clicking on the 'Prev'/'Next' button
+  const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
+  const prevBtn = document.querySelector(PATH.pagination.prev)
+  const nextBtn = document.querySelector(PATH.pagination.next)
+
+  if (target.closest(PATH.pagination.prev) && !prevBtn.classList.contains('disabled')) {
+    state.currentPage--
+    pagination(searchItems, 'prev', state.currentPage, state.itemsPerPage)
+  }
+
+  if (target.closest(PATH.pagination.next) && !nextBtn.classList.contains('disabled')) {
+    state.currentPage++
+    pagination(searchItems, 'next', state.currentPage, state.itemsPerPage)
   }
 })
 
