@@ -49,6 +49,9 @@ const searchController = async (search = false) => {
 
   // get search results
   if (query) {
+    // set start page to 1 every time we search smth
+    state.currentPage = 1
+
     // create new search object instance based on the search query
     state.search = new Search(query)
 

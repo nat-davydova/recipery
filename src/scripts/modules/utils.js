@@ -64,6 +64,7 @@ export const pagination = (arrayItems, mode, currPage, numPerPage) => {
     arrayItems.forEach((elem, index) => {
       if (index > currPage * (numPerPage - 1)) {
         hideElem(elem)
+        console.log(`index: ${index}`)
       }
     })
     // mode for prev/next buttons
