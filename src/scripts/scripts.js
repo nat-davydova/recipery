@@ -139,23 +139,19 @@ document.addEventListener('click', e => {
     recipeController(recipeCard.dataset.id)
   }
 
-  // clicking on the 'Next' button
-  if (target.closest(PATH.pagination.next)) {
-    const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
-    if (!document.querySelector(PATH.pagination.next).classList.contains('disabled')) {
-      state.currentPage++
-      pagination(searchItems, 'next', state.currentPage, state.itemsPerPage)
-    }
+  // clicking on the 'Prev'/'Next' button
+  const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
+  const prevBtn = document.querySelector(PATH.pagination.prev)
+  const nextBtn = document.querySelector(PATH.pagination.next)
+
+  if (target.closest(PATH.pagination.prev) && !prevBtn.classList.contains('disabled')) {
+    state.currentPage--
+    pagination(searchItems, 'prev', state.currentPage, state.itemsPerPage)
   }
 
-  // click on the 'Prev' button
-  if (target.closest(PATH.pagination.prev)) {
-    const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
-    pagination(searchItems, 'prev', state.currentPage, state.itemsPerPage)
-    if (!document.querySelector(PATH.pagination.prev).classList.contains('disabled')) {
-      state.currentPage--
-      pagination(searchItems, 'prev', state.currentPage, state.itemsPerPage)
-    }
+  if (target.closest(PATH.pagination.next) && !nextBtn.classList.contains('disabled')) {
+    state.currentPage++
+    pagination(searchItems, 'next', state.currentPage, state.itemsPerPage)
   }
 })
 
