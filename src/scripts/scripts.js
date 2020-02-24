@@ -40,12 +40,11 @@ const searchController = async (search = false) => {
   // search init state
   const initState = {
     searchField: document.querySelector(PATH.search.field),
-    itemsPerRequest: 15 // number - items per request (min - 1, max - 100)
+    itemsPerRequest: 60 // number - items per request (min - 1, max - 100)
   }
 
   // get search query from the search input
-  // const query = getInputVal(initState.searchField)
-  const query = 'apple'
+  const query = getInputVal(initState.searchField)
   const searchError = document.querySelector(PATH.search.error)
 
   // get search results
