@@ -64,20 +64,29 @@ export const pagination = (arrayItems, mode, currPage, numPerPage) => {
     arrayItems.forEach((elem, index) => {
       if (index > currPage * (numPerPage - 1)) {
         hideElem(elem)
-      } else {
-        console.log(`Index: ${index}, minIndex: 0, maxIndex: ${currPage * (numPerPage - 1)}, page: ${currPage}`)
       }
     })
-    console.log('_______________________')
+    // mode for prev/next buttons
   } else if (mode === 'next' || mode === 'prev') {
     arrayItems.forEach((elem, index) => {
       if (index < (currPage - 1) * numPerPage || index >= currPage * numPerPage) {
         hideElem(elem)
       } else {
-        console.log(`Index: ${index}, minIndex: ${(currPage - 1) * numPerPage}, maxIndex: ${currPage * numPerPage}, page: ${currPage}`)
         showElem(elem)
       }
     })
-    console.log('_______________________')
+  }
+
+  // enabling/disabling buttons
+  if (currPage - 1 === 0) {
+    document.querySelector(PATH.pagination.prev).classList.add('disabled')
+  } else {
+    document.querySelector(PATH.pagination.prev).classList.remove('disabled')
+  }
+
+  if (currPage * numPerPage === arrayItems.length) {
+    document.querySelector(PATH.pagination.next).classList.add('disabled')
+  } else {
+    document.querySelector(PATH.pagination.next).classList.remove('disabled')
   }
 }

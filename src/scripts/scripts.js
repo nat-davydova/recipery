@@ -40,7 +40,7 @@ const searchController = async (search = false) => {
   // search init state
   const initState = {
     searchField: document.querySelector(PATH.search.field),
-    itemsPerRequest: 70 // number - items per request (min - 1, max - 100)
+    itemsPerRequest: 15 // number - items per request (min - 1, max - 100)
   }
 
   // get search query from the search input
@@ -141,16 +141,21 @@ document.addEventListener('click', e => {
 
   // clicking on the 'Next' button
   if (target.closest(PATH.pagination.next)) {
-    state.currentPage++
     const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
-    pagination(searchItems, 'next', state.currentPage, state.itemsPerPage)
+    if (!document.querySelector(PATH.pagination.next).classList.contains('disabled')) {
+      state.currentPage++
+      pagination(searchItems, 'next', state.currentPage, state.itemsPerPage)
+    }
   }
 
   // click on the 'Prev' button
   if (target.closest(PATH.pagination.prev)) {
-    state.currentPage--
     const searchItems = document.querySelectorAll(PATH.recipeCard.cardClass)
     pagination(searchItems, 'prev', state.currentPage, state.itemsPerPage)
+    if (!document.querySelector(PATH.pagination.prev).classList.contains('disabled')) {
+      state.currentPage--
+      pagination(searchItems, 'prev', state.currentPage, state.itemsPerPage)
+    }
   }
 })
 
