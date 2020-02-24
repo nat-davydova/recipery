@@ -79,14 +79,18 @@ export const pagination = (arrayItems, mode, currPage, numPerPage) => {
 
   // enabling/disabling buttons
   if (currPage - 1 === 0) {
-    document.querySelector(PATH.pagination.prev).classList.add('disabled')
+    document.querySelector(PATH.pagination.prev)
+      .classList.add('disabled')
   } else {
-    document.querySelector(PATH.pagination.prev).classList.remove('disabled')
+    document.querySelector(PATH.pagination.prev)
+      .classList.remove('disabled')
   }
 
   if (currPage * numPerPage === arrayItems.length) {
-    document.querySelector(PATH.pagination.next).classList.add('disabled')
+    document.querySelector(PATH.pagination.next)
+      .classList.add('disabled')
   } else {
-    document.querySelector(PATH.pagination.next).classList.remove('disabled')
+    document.querySelector(PATH.pagination.next)
+      .classList.remove('disabled')
   }
 }
