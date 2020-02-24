@@ -4,7 +4,8 @@ import {
   renderImg,
   cleanElemInner,
   showElem,
-  pagination
+  pagination,
+  hideElem
 } from '../utils'
 
 const paginationElem = document.querySelector(PATH.pagination.pagination);
@@ -51,5 +52,6 @@ export const renderSearchResults = (pageToStartRender, itemsPerPage, { results, 
     showElem(paginationElem)
   } else {
     renderErrorMsg('Sorry, we can\'t find any recipes :( Try other keywords!', PATH.searchResPanel.results)
+    hideElem(paginationElem)
   }
 }
